@@ -1,0 +1,68 @@
+using System;
+using Disney.Mix.SDK.Internal.MixDomain;
+
+namespace Disney.Mix.SDK.Internal
+{
+	public interface INotificationDispatcher
+	{
+		event EventHandler<AbstractAddChatThreadGagMessageNotificationEventArgs> OnChatThreadGagMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadMembershipNotificationEventArgs> OnChatThreadMembershipAdded;
+
+		event EventHandler<AbstractAddChatThreadNotificationEventArgs> OnChatThreadAdded;
+
+		event EventHandler<AbstractAddChatThreadPhotoMessageNotificationEventArgs> OnChatThreadPhotoMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadStickerMessageNotificationEventArgs> OnChatThreadStickerMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadTextMessageNotificationEventArgs> OnChatThreadTextMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadVideoMessageNotificationEventArgs> OnChatThreadVideoMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadMemberListChangedMessageNotificationEventArgs> OnChatThreadMemberListChangedMessageAdded;
+
+		event EventHandler<AbstractAddChatThreadGameStateMessageNotificationEventArgs> OnChatThreadGameStateMessageAdded;
+
+		event EventHandler<AbstractUpdateChatThreadGameStateMessageNotificationEventArgs> OnChatThreadGameStateMessageUpdated;
+
+		event EventHandler<AbstractAddChatThreadGameEventMessageNotificationEventArgs> OnChatThreadGameEventMessageAdded;
+
+		event EventHandler<AbstractAddFriendshipNotificationEventArgs> OnFriendshipAdded;
+
+		event EventHandler<AbstractAddFriendshipInvitationNotificationEventArgs> OnFriendshipInvitationAdded;
+
+		event EventHandler<AbstractAddNicknameNotificationEventArgs> OnNicknameAdded;
+
+		event EventHandler<AbstractRemoveChatThreadMembershipNotificationEventArgs> OnChatThreadMembershipRemoved;
+
+		event EventHandler<AbstractRemoveFriendshipInvitationNotificationEventArgs> OnFriendshipInvitationRemoved;
+
+		event EventHandler<AbstractRemoveFriendshipNotificationEventArgs> OnFriendshipRemoved;
+
+		event EventHandler<AbstractRemoveFriendshipTrustNotificationEventArgs> OnFriendshipTrustRemoved;
+
+		event EventHandler<AbstractRemoveNicknameNotificationEventArgs> OnNicknameRemoved;
+
+		event EventHandler<AbstractSetAvatarNotificationEventArgs> OnAvatarSet;
+
+		event EventHandler<AbstractUpdateChatThreadTrustStatusNotificationEventArgs> OnChatThreadTrustStatusUpdate;
+
+		event EventHandler<AbstractAddChatThreadNicknameNotificationEventArgs> OnChatThreadNicknameAdded;
+
+		event EventHandler<AbstractRemoveChatThreadNicknameNotificationEventArgs> OnChatThreadNicknameRemoved;
+
+		event EventHandler<AbstractClearMemberChatHistoryNotificationEventArgs> OnChatThreadHistoryCleared;
+
+		event EventHandler<AbstractClearUnreadMessageCountNotificationEventArgs> OnUnreadMessageCountCleared;
+
+		event EventHandler<AbstractAddFollowshipNotificationEventArgs> OnOfficialAccountFollowed;
+
+		event EventHandler<AbstractRemoveFollowshipNotificationEventArgs> OnOfficialAccountUnfollowed;
+
+		event EventHandler<AbstractAddAlertNotificationEventArgs> OnAlertAdded;
+
+		event EventHandler<AbstractClearAlertNotificationEventArgs> OnAlertCleared;
+
+		void Dispatch(BaseNotification notification);
+	}
+}
