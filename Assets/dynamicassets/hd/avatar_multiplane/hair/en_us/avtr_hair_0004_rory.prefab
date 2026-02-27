@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1113155104640252
+--- !u!1 &1242983864806445
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4679339881053785}
-  - 114: {fileID: 114226244556232837}
+  - 4: {fileID: 4997332168986830}
+  - 114: {fileID: 114730837483287297}
   m_Layer: 0
   m_Name: avtr_hair_0004_rory
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4679339881053785
+--- !u!4 &4997332168986830
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1113155104640252}
+  m_GameObject: {fileID: 1242983864806445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114226244556232837
+--- !u!114 &114730837483287297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1113155104640252}
+  m_GameObject: {fileID: 1242983864806445}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,13 +46,13 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 0
-    Texture: {fileID: 2800000, guid: febd35090637be441945811af7eb4c6a, type: 3}
+    Texture: {fileID: 2800000, guid: b84fd3a9dc1e0094dbad715d5b0a63b8, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 2
-    Texture: {fileID: 2800000, guid: d8415febf79a3d34b9636212836b06bd, type: 3}
+    Texture: {fileID: 2800000, guid: 73f445a0edfa0434c8b66d9fbf6e14d2, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 1
-    Texture: {fileID: 2800000, guid: 5a9a833704fd6184499aca6a93d3a71c, type: 3}
+    Texture: {fileID: 2800000, guid: 21c5cbd3cffb6ab4581da9b242f66bc0, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -63,5 +63,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1113155104640252}
+  m_RootGameObject: {fileID: 1242983864806445}
   m_IsPrefabParent: 1

@@ -230,11 +230,17 @@ namespace Mix.Native
 				Init();
 				Selected = true;
 				SendFocusEvent();
-				if (Application.IsEditor && textRectTransform != null)
+
+				// NEW: Rely on Unity's InputField to handle the keyboard
+				var inputField = GetComponent<InputField>();
+				if (inputField != null)
 				{
-					textRectTransform.GetComponent<InputField>().Select();
+					inputField.Select();
+					inputField.ActivateInputField();
 				}
-				MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.ShowKeyboard(this, alignment, keyboardEntryType, returnKeyType, maxCharacters, suggestions, multipleLines, isPassword);
+				
+				// OLD: Custom native call is no longer needed if using standard InputFields
+				// MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.ShowKeyboard(this, alignment, keyboardEntryType, returnKeyType, maxCharacters, suggestions, multipleLines, isPassword);
 			}
 		}
 

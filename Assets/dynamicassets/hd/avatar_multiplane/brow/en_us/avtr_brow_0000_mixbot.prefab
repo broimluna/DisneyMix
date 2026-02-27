@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1481044387356071
+--- !u!1 &1416243868998754
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4630932840927869}
-  - 114: {fileID: 114451442645975021}
+  - 4: {fileID: 4488392364942027}
+  - 114: {fileID: 114709994092562831}
   m_Layer: 0
   m_Name: avtr_brow_0000_mixbot
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4630932840927869
+--- !u!4 &4488392364942027
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1481044387356071}
+  m_GameObject: {fileID: 1416243868998754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114451442645975021
+--- !u!114 &114709994092562831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1481044387356071}
+  m_GameObject: {fileID: 1416243868998754}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 3
-    Texture: {fileID: 2800000, guid: f6478b4e7802b1f40a17e0a5f3df6642, type: 3}
+    Texture: {fileID: 2800000, guid: 2a4334869d6fb4741b77446e59c6dda5, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -57,5 +57,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1481044387356071}
+  m_RootGameObject: {fileID: 1416243868998754}
   m_IsPrefabParent: 1

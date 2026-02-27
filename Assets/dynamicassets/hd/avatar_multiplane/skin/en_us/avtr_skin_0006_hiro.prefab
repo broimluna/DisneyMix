@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1344390729319143
+--- !u!1 &1733557519805456
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4769522331677655}
-  - 114: {fileID: 114506256333711046}
+  - 4: {fileID: 4836922414762661}
+  - 114: {fileID: 114170412368736305}
   m_Layer: 0
   m_Name: avtr_skin_0006_hiro
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4769522331677655
+--- !u!4 &4836922414762661
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344390729319143}
+  m_GameObject: {fileID: 1733557519805456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114506256333711046
+--- !u!114 &114170412368736305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344390729319143}
+  m_GameObject: {fileID: 1733557519805456}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 2
-    Texture: {fileID: 2800000, guid: bb1c8f73649a193468b35fb48a66b0ce, type: 3}
+    Texture: {fileID: 2800000, guid: a8c33b6630d2ee647bdb5c300f1ff221, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -57,5 +57,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1344390729319143}
+  m_RootGameObject: {fileID: 1733557519805456}
   m_IsPrefabParent: 1

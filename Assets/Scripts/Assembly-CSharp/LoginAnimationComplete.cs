@@ -1,14 +1,15 @@
 using Mix;
 using Mix.Native;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoginAnimationComplete : MonoBehaviour
 {
-	public NativeTextView selectedField;
+	public InputField selectedField;
 
 	public void OnAnimationComplete()
 	{
-		selectedField.SelectInput();
+		selectedField.Select();
 	}
 
 	public void OnIntroAnimationStart()

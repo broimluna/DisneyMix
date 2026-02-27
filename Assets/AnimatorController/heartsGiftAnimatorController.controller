@@ -23,7 +23,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1107733750615091592}
+    m_StateMachine: {fileID: 1107284285971028023}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -34,7 +34,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   m_MultiThreadedStateMachine: 1
---- !u!1107 &1107733750615091592
+--- !u!1107 &1107284285971028023
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -42,15 +42,15 @@ AnimatorStateMachine:
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
   m_ChildStates:
-  - m_State: {fileID: 1102758246775385503}
+  - m_State: {fileID: 1102012877359953687}
     m_Position: {x: 0, y: 0, z: 0}
-  - m_State: {fileID: 1102958686898025016}
+  - m_State: {fileID: 1102451924368623692}
     m_Position: {x: 250, y: 0, z: 0}
-  - m_State: {fileID: 1102810197489582930}
+  - m_State: {fileID: 1102045823063976373}
     m_Position: {x: 0, y: 100, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
-  - {fileID: 1101618841605664274}
+  - {fileID: 1101775390724692149}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -58,8 +58,8 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 250, y: -100, z: 0}
   m_ExitPosition: {x: 500, y: -100, z: 0}
   m_ParentStateMachinePosition: {x: 0, y: -200, z: 0}
-  m_DefaultState: {fileID: 1102810197489582930}
---- !u!1101 &1101618841605664274
+  m_DefaultState: {fileID: 1102045823063976373}
+--- !u!1101 &1101775390724692149
 AnimatorStateTransition:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -71,7 +71,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Play
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102758246775385503}
+  m_DstState: {fileID: 1102012877359953687}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -83,7 +83,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
---- !u!1102 &1102758246775385503
+--- !u!1102 &1102012877359953687
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -93,7 +93,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101248991810029741}
+  - {fileID: 1101137109322509383}
   m_StateMachineBehaviours: []
   m_Position: {x: 0, y: 0, z: 0}
   m_IKOnFeet: 0
@@ -102,12 +102,12 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7a9be58c24a85204286f64fb02c0263c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1817676b6a62fef42895dab1849b7362, type: 2}
   m_Tag:
   m_SpeedParameter:
   m_MirrorParameter:
   m_CycleOffsetParameter:
---- !u!1101 &1101248991810029741
+--- !u!1101 &1101137109322509383
 AnimatorStateTransition:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -116,7 +116,7 @@ AnimatorStateTransition:
   m_Name:
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102958686898025016}
+  m_DstState: {fileID: 1102451924368623692}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -128,7 +128,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
---- !u!1102 &1102958686898025016
+--- !u!1102 &1102451924368623692
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -151,7 +151,7 @@ AnimatorState:
   m_SpeedParameter:
   m_MirrorParameter:
   m_CycleOffsetParameter:
---- !u!1102 &1102810197489582930
+--- !u!1102 &1102045823063976373
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1

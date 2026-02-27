@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1718102907184785
+--- !u!1 &1203344223697822
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4611686991962125}
+  - 4: {fileID: 4060473208834806}
   m_Layer: 8
   m_Name: madParticleLeft
   m_TagString: Untagged
@@ -15,16 +15,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1225815094930154
+--- !u!1 &1114590106052662
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4492844622382785}
-  - 198: {fileID: 198995155919102440}
-  - 199: {fileID: 199654594459509132}
+  - 4: {fileID: 4923510779179576}
+  - 198: {fileID: 198540983596538558}
+  - 199: {fileID: 199226639305240461}
   m_Layer: 8
   m_Name: madParticle
   m_TagString: Untagged
@@ -32,40 +32,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4611686991962125
+--- !u!4 &4060473208834806
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1718102907184785}
+  m_GameObject: {fileID: 1203344223697822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.8446, y: -2.4785, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_Children:
-  - {fileID: 4492844622382785}
+  - {fileID: 4923510779179576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &4492844622382785
+--- !u!4 &4923510779179576
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225815094930154}
+  m_GameObject: {fileID: 1114590106052662}
   m_LocalRotation: {x: 0.43921325, y: -0.55415857, z: -0.55415857, w: 0.43921325}
   m_LocalPosition: {x: 0.1958, y: 0.23122, z: -0.28019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 90, y: -0, z: 103.20094}
   m_Children: []
-  m_Father: {fileID: 4611686991962125}
+  m_Father: {fileID: 4060473208834806}
   m_RootOrder: 0
---- !u!198 &198995155919102440
+--- !u!198 &198540983596538558
 ParticleSystem:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225815094930154}
+  m_GameObject: {fileID: 1114590106052662}
   lengthInSec: 1
   startDelay:
     scalar: 0
@@ -1763,12 +1763,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &199654594459509132
+--- !u!199 &199226639305240461
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225815094930154}
+  m_GameObject: {fileID: 1114590106052662}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1776,7 +1776,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 41c044b33f9d34e4aaa4ef786d487580, type: 2}
+  - {fileID: 2100000, guid: 2b87f07e4e6c9b04aa540d6ca1e1b00b, type: 2}
   m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1816,5 +1816,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1718102907184785}
+  m_RootGameObject: {fileID: 1203344223697822}
   m_IsPrefabParent: 1

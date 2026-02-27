@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1466383869267096
+--- !u!1 &1144195298042936
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4598683802394845}
-  - 114: {fileID: 114207545274504021}
+  - 4: {fileID: 4731769307373572}
+  - 114: {fileID: 114984428046595002}
   m_Layer: 0
   m_Name: avtr_gahf_3007_ghollywoodcat
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4598683802394845
+--- !u!4 &4731769307373572
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466383869267096}
+  m_GameObject: {fileID: 1144195298042936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114207545274504021
+--- !u!114 &114984428046595002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466383869267096}
+  m_GameObject: {fileID: 1144195298042936}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,10 +46,10 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 0
-    Texture: {fileID: 2800000, guid: 6ac2bfa662f43c142bf6cdfe0afd5a75, type: 3}
+    Texture: {fileID: 2800000, guid: 04c72f198ed831e49916850eda405859, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 6
-    Texture: {fileID: 2800000, guid: 05f3be3a31b94fe4ca0c035058032ab1, type: 3}
+    Texture: {fileID: 2800000, guid: 7912fe56ceb19c54d9f07932d36185f0, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -60,5 +60,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1466383869267096}
+  m_RootGameObject: {fileID: 1144195298042936}
   m_IsPrefabParent: 1

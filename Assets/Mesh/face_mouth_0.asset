@@ -2,11 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!43 &4300000
 Mesh:
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: face_mouth_0
-  serializedVersion: 8
+  m_Name: face_mouth
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
@@ -15,63 +15,13 @@ Mesh:
     firstVertex: 0
     vertexCount: 4
     localAABB:
-      m_Center: {x: -8, y: 5.7727365, z: 50.467457}
-      m_Extent: {x: 15.747467, y: 11.636422, z: 0}
+      m_Center: {x: 0, y: 22.66417, z: 51.10316}
+      m_Extent: {x: 17.229774, y: 12.731757, z: 0}
   m_Shapes:
-    vertices:
-    - vertex: {x: 16, y: 0, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 0
-    - vertex: {x: 16, y: 0, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 1
-    - vertex: {x: 16, y: 0, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 2
-    - vertex: {x: 16, y: 0, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 3
-    - vertex: {x: 0, y: 6, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 0
-    - vertex: {x: 0, y: 6, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 1
-    - vertex: {x: 0, y: 6, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 2
-    - vertex: {x: 0, y: 6, z: 0}
-      normal: {x: 0, y: 0, z: 0}
-      tangent: {x: 0, y: 0, z: 0}
-      index: 3
-    shapes:
-    - firstVertex: 0
-      vertexCount: 4
-      hasNormals: 0
-      hasTangents: 0
-    - firstVertex: 4
-      vertexCount: 4
-      hasNormals: 0
-      hasTangents: 0
-    channels:
-    - name: blendShape2.face_mouth2
-      nameHash: 3935690399
-      frameIndex: 0
-      frameCount: 1
-    - name: blendShape1.face_mouth1
-      nameHash: 3461800939
-      frameIndex: 1
-      frameCount: 1
-    fullWeights:
-    - 100
-    - 100
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
   m_BindPose:
   - e00: 1
     e01: -0
@@ -80,7 +30,7 @@ Mesh:
     e10: -0
     e11: 1
     e12: 0
-    e13: -7.2
+    e13: -19.194971
     e20: -0
     e21: 0
     e22: 1
@@ -89,7 +39,7 @@ Mesh:
     e31: 0
     e32: 0
     e33: 1
-  m_BoneNameHashes: 9deaddb8
+  m_BoneNameHashes: 9deadd+8
   m_RootBoneNameHash: 3101551261
   m_MeshCompression: 0
   m_IsReadable: 1
@@ -166,63 +116,63 @@ Mesh:
       format: 0
       dimension: 4
     m_DataSize: 224
-    _typelessdata: d0fabdc150a3bbc0adde494200000000000000000000803f000080bf0000000000000000000080bf40ebf74050a3bbc0adde494200000000000000000000803f000080bf0000000000000000000080bf40ebf740f5458b41adde494200000000000000000000803f000080bf0000000000000000000080bfd0fabdc1f5458b41adde494200000000000000000000803f000080bf0000000000000000000080bf0000803f00000000000000000000000000000000000000000000803f00000000000000000000803f0000803f0000803f0000803f0000803f000000000000803f
+    _typelessdata: 94d689c12aeb1e41a3694c4200000000000000000000803f000080bf0000000000000000000080bf94d689412aeb1e41a3694c4200000000000000000000803f000080bf0000000000000000000080bf94d689416e950d42a3694c4200000000000000000000803f000080bf0000000000000000000080bf94d689c16e950d42a3694c4200000000000000000000803f000080bf0000000000000000000080bf4a3e793f00000000c036d83c00000000c036d83c000000004a3e793f00000000c036d83c0000803f4a3e793f0000803f4a3e793f0000803fc036d83c0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_FloatColors:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0, y: 8.772737, z: 50.467457}
-    m_Extent: {x: 23.747467, y: 14.636422, z: 0}
+    m_Center: {x: 0, y: 22.66417, z: 51.10316}
+    m_Extent: {x: 17.229774, y: 12.731757, z: 0}
   m_MeshUsageFlags: 1
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
+  m_BakedConvexCollisionMesh:
+  m_BakedTriangleCollisionMesh:
   m_MeshOptimized: 1

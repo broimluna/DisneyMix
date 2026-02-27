@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1646624660597736
+--- !u!1 &1775913004396089
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4404529237978140}
-  - 114: {fileID: 114411003345875353}
+  - 4: {fileID: 4055107971237949}
+  - 114: {fileID: 114106807970922160}
   m_Layer: 0
   m_Name: avtr_hair_0009_bingbing
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4404529237978140
+--- !u!4 &4055107971237949
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646624660597736}
+  m_GameObject: {fileID: 1775913004396089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114411003345875353
+--- !u!114 &114106807970922160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646624660597736}
+  m_GameObject: {fileID: 1775913004396089}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,13 +46,13 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 0
-    Texture: {fileID: 2800000, guid: 723131dd071179f498e1218239f1e2ed, type: 3}
+    Texture: {fileID: 2800000, guid: 21a1f317ae5d7c849b2ab2634d1726e6, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 2
-    Texture: {fileID: 2800000, guid: a47a086d4bd59724fb12eaaa29daef14, type: 3}
+    Texture: {fileID: 2800000, guid: 519970008051893428f5bbf094f822d2, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 1
-    Texture: {fileID: 2800000, guid: c7df4a41d54865447b174a31aad3d498, type: 3}
+    Texture: {fileID: 2800000, guid: e8d502dc6ca881e4989dcbec8500d710, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -63,5 +63,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1646624660597736}
+  m_RootGameObject: {fileID: 1775913004396089}
   m_IsPrefabParent: 1

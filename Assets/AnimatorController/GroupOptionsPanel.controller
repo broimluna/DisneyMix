@@ -11,7 +11,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1107076130181615572}
+    m_StateMachine: {fileID: 1107017883789375848}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -21,7 +21,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1107 &1107076130181615572
+--- !u!1107 &1107017883789375848
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -29,9 +29,9 @@ AnimatorStateMachine:
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
   m_ChildStates:
-  - m_State: {fileID: 1102307255522237848}
+  - m_State: {fileID: 1102414575428966413}
     m_Position: {x: 0, y: 0, z: 0}
-  - m_State: {fileID: 1102248352751933627}
+  - m_State: {fileID: 1102819260556794856}
     m_Position: {x: 250, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
@@ -42,8 +42,8 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 250, y: -100, z: 0}
   m_ExitPosition: {x: 500, y: -100, z: 0}
   m_ParentStateMachinePosition: {x: 0, y: -200, z: 0}
-  m_DefaultState: {fileID: 1102307255522237848}
---- !u!1102 &1102307255522237848
+  m_DefaultState: {fileID: 1102414575428966413}
+--- !u!1102 &1102414575428966413
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -61,12 +61,12 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cee9446e585bbb54e99abf93ae1a4c94, type: 2}
+  m_Motion: {fileID: 7400000, guid: 28830fbc6d607be4f85b3d7def729322, type: 2}
   m_Tag:
   m_SpeedParameter:
   m_MirrorParameter:
   m_CycleOffsetParameter:
---- !u!1102 &1102248352751933627
+--- !u!1102 &1102819260556794856
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d30c4cc5f81c7f947b23fbc14df83b2c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6abff0cbcf80c5944b344d91ead7bc2b, type: 2}
   m_Tag:
   m_SpeedParameter:
   m_MirrorParameter:

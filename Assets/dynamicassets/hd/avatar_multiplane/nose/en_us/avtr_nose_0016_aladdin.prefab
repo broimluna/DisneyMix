@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1895358570327844
+--- !u!1 &1016505752773922
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4648823403665993}
-  - 114: {fileID: 114878487839987324}
+  - 4: {fileID: 4160826309503780}
+  - 114: {fileID: 114905695234249414}
   m_Layer: 0
   m_Name: avtr_nose_0016_aladdin
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4648823403665993
+--- !u!4 &4160826309503780
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895358570327844}
+  m_GameObject: {fileID: 1016505752773922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114878487839987324
+--- !u!114 &114905695234249414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895358570327844}
+  m_GameObject: {fileID: 1016505752773922}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,10 +46,10 @@ MonoBehaviour:
   ignoreCropAndOffset: 0
   Layers:
   - BlendMode: 1
-    Texture: {fileID: 2800000, guid: 45ac2c29829d9e245a60a6dae85c95c4, type: 3}
+    Texture: {fileID: 2800000, guid: 6a0033ac5d0986f40b6102a66e73c1e8, type: 3}
     NormalMap: {fileID: 0}
   - BlendMode: 2
-    Texture: {fileID: 2800000, guid: 8b53c7d9869add04d8e6a03b016c849b, type: 3}
+    Texture: {fileID: 2800000, guid: 8bc4e81712d1fe44a9e3a9e14e57ad2c, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -60,5 +60,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1895358570327844}
+  m_RootGameObject: {fileID: 1016505752773922}
   m_IsPrefabParent: 1

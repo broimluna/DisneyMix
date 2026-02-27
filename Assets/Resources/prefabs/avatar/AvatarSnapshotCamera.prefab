@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1378603112158882
+--- !u!1 &1940162009301119
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4514990719579427}
-  - 20: {fileID: 20712004981134387}
+  - 4: {fileID: 4835245548240542}
+  - 20: {fileID: 20421002784014175}
   m_Layer: 0
   m_Name: AvatarSnapshotCamera
   m_TagString: MainCamera
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4514990719579427
+--- !u!4 &4835245548240542
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378603112158882}
+  m_GameObject: {fileID: 1940162009301119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2000, y: 0, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,13 +29,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &20712004981134387
+--- !u!20 &20421002784014175
 Camera:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378603112158882}
+  m_GameObject: {fileID: 1940162009301119}
   m_Enabled: 1
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
@@ -72,5 +72,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1378603112158882}
+  m_RootGameObject: {fileID: 1940162009301119}
   m_IsPrefabParent: 1

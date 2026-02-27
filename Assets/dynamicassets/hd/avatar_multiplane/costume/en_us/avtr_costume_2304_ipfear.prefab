@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1947293795526156
+--- !u!1 &1281368638146902
 GameObject:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_Component:
-  - 4: {fileID: 4416642094381846}
-  - 114: {fileID: 114474100706716902}
+  - 4: {fileID: 4377917906397603}
+  - 114: {fileID: 114900889331273769}
   m_Layer: 0
   m_Name: avtr_costume_2304_ipfear
   m_TagString: Untagged
@@ -16,12 +16,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4416642094381846
+--- !u!4 &4377917906397603
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1947293795526156}
+  m_GameObject: {fileID: 1281368638146902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 450, y: 257, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,12 +29,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114474100706716902
+--- !u!114 &114900889331273769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1947293795526156}
+  m_GameObject: {fileID: 1281368638146902}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa753c42d4868acb4783a486e94cf11c, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
   ignoreCropAndOffset: 1
   Layers:
   - BlendMode: 0
-    Texture: {fileID: 2800000, guid: 4362d67e33572ce44943c0a4073458fb, type: 3}
+    Texture: {fileID: 2800000, guid: e8899f30f992c604d947388ea8280533, type: 3}
     NormalMap: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -57,5 +57,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1947293795526156}
+  m_RootGameObject: {fileID: 1281368638146902}
   m_IsPrefabParent: 1
