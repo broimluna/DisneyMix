@@ -3,7 +3,6 @@ using DeviceDB;
 using Disney.Mix.SDK.Internal;
 using FileSystem = Disney.Mix.SDK.Internal.FileSystem;
 
-
 namespace Disney.Mix.SDK
 {
 	public class NewAccountValidator : INewAccountValidator

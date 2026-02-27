@@ -30,8 +30,25 @@ namespace LitJson
 
 		private TextWriter writer;
 
+		public int IndentValue
+		{
+			get
+			{
+				return indent_value;
+			}
+			set
+			{
+				indentation = indentation / indent_value * value;
+				indent_value = value;
+			}
+		}
+
 		public bool PrettyPrint
 		{
+			get
+			{
+				return pretty_print;
+			}
 			set
 			{
 				pretty_print = value;
@@ -330,6 +347,13 @@ namespace LitJson
 				PutString(str);
 			}
 			context.ExpectingValue = false;
+		}
+
+		public void WriteRaw(string json)
+		{
+			PutNewline();
+			writer.Write(json);
+			context.ExpectingValue = !context.ExpectingValue;
 		}
 
 		[CLSCompliant(false)]

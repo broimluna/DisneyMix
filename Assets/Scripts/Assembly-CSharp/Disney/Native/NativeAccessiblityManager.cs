@@ -59,7 +59,7 @@ namespace Disney.Native
 		protected void Awake()
 		{
 			AccessibilityLevel = NativeAccessibilityLevel.NONE;
-			native = base.gameObject.AddComponent<NativeAndroidAccessibility>();
+			//native = base.gameObject.AddComponent<NativeAndroidAccessibility>();
 		}
 
 		private void OnApplicationPause(bool aIsGoingToBackground)

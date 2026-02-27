@@ -18,18 +18,14 @@ namespace Mix.SequenceOperations
 			BaseStartOperation();
 			Singleton<MobileNetworkManager>.Instance.Init();
 			EnvironmentManager.ShowStatusBar(true);
-			InitSecurityUtilsPlugin();
-			InitAccessibilityPlugin();
-			InitSystemTextPlugin();
-			InitMemoryMonitorPlugin();
-			MonoSingleton<NativeVideoPlaybackManager>.Instance.Init();
-			MonoSingleton<NativeKeyboardManager>.Instance.Init();
-			MonoSingleton<NativeUtilitiesManager>.Instance.Init();
-			MonoSingleton<NativeCameraManager>.Instance.Init();
-			if (Service.Get<SecurityUtilsManager>().IsDebuggerAttached() && (string.IsNullOrEmpty(ConfigurationManager.EnvironmentString) || ConfigurationManager.EnvironmentString == "prod"))
-			{
-				UnityEngine.Application.Quit();
-			}
+			//InitSecurityUtilsPlugin();
+			//InitAccessibilityPlugin();
+			//InitSystemTextPlugin();
+			//InitMemoryMonitorPlugin();
+			//MonoSingleton<NativeVideoPlaybackManager>.Instance.Init();
+			//MonoSingleton<NativeKeyboardManager>.Instance.Init();
+			//MonoSingleton<NativeUtilitiesManager>.Instance.Init();
+			//MonoSingleton<NativeCameraManager>.Instance.Init();
 			finish(OperationStatus.STATUS_SUCCESSFUL);
 		}
 

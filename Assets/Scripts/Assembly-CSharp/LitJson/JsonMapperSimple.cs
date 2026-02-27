@@ -7,10 +7,6 @@ namespace LitJson
 	{
 		public static object ToObjectSimple(string json)
 		{
-			if (string.IsNullOrEmpty(json))
-			{
-				return null;
-			}
 			JsonReader reader = new JsonReader(json);
 			return ReadValueSimple(reader);
 		}
@@ -18,7 +14,7 @@ namespace LitJson
 		private static object ReadValueSimple(JsonReader reader)
 		{
 			reader.Read();
-			if (reader.Token == JsonToken.None || reader.Token == JsonToken.ArrayEnd || reader.Token == JsonToken.ObjectEnd || reader.Token == JsonToken.Null)
+			if (reader.Token == JsonToken.ArrayEnd || reader.Token == JsonToken.Null)
 			{
 				return null;
 			}
@@ -55,7 +51,7 @@ namespace LitJson
 				}
 				return dictionary;
 			}
-			throw new JsonException(string.Format("Unknown JSON type while parsing. Token: {0}, Value: {1}", reader.Token, reader.Value));
+			throw new JsonException(string.Format("Unknown JSON type while parsing. Not a double, int, long, string, boolean, array, or object"));
 		}
 	}
 }

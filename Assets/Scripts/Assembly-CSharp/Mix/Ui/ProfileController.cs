@@ -145,7 +145,6 @@ namespace Mix.Ui
 		{
 			if (base.transform.Find("UI_BG_Holder/UI_BG_ProfileScreen/BottomNav/ChatsBtn").GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				NavigationRequest navigationRequest = new NavigationRequest("Prefabs/Screens/Conversations/ConversationsScreen", new TransitionNone());
 				navigationRequest.PopLastRequest = true;
 				navigationRequest.AddData("startConversation", true);
@@ -168,7 +167,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = new NavigationRequest("Prefabs/Screens/Friends/FriendsScreen", new TransitionNone());
 			if (base.transform.Find("UI_BG_Holder/UI_BG_ProfileScreen/BottomNav/FriendsBtn").GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest.AddData("qrCode", true);
 			}
 			MonoSingleton<NavigationManager>.Instance.AddRequest(navigationRequest);

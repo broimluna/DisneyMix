@@ -25,7 +25,6 @@ public class PressureSensitiveButton : Button, IPointerDownHandler, IEventSystem
 			}
 			if (touch.pressure / touch.maximumPossiblePressure >= pressureThreshholdPercent)
 			{
-				Handheld.Vibrate();
 				HardPress = true;
 				press = false;
 				base.onClick.Invoke();

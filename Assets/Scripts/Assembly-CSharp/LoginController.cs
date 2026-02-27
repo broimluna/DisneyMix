@@ -136,16 +136,18 @@ public class LoginController : BaseController
 			{
 				GameObject gameObject4 = GameObject.Find("LoginBtn");
 				gameObject4.GetComponent<Button>().onClick.Invoke();
-			}}
-			//else if (incomingToken == "forceUpdate")
-			//{
-				//ForceUpdatePanel forceUpdatePanel = Singleton<PanelManager>.Instance.ShowPanel(Panels.FORCE_UPDATE) as ForceUpdatePanel;
-				//Singleton<PanelManager>.Instance.SetupButtons(new Dictionary<Button, Action> { 
-				//{
-					//forceUpdatePanel.ButtonOne,
-					//new Action(null, (IntPtr)(void*)(ulong)(UIntPtr/*delegate*<bool, void>*/)(&ForceUpdate.GoToAppStore))
-				//} });
-				//forceUpdatePanel.ShowSimpleError("customtokens.forceupdate.number_one");
+			}
+			else if (incomingToken == "forceUpdate")
+			{
+				ForceUpdatePanel forceUpdatePanel = Singleton<PanelManager>.Instance.ShowPanel(Panels.FORCE_UPDATE) as ForceUpdatePanel;
+				Singleton<PanelManager>.Instance.SetupButtons(new Dictionary<Button, Action> { 
+				{
+					forceUpdatePanel.ButtonOne,
+					() => ForceUpdate.GoToAppStore()
+				} });
+				forceUpdatePanel.ShowSimpleError("customtokens.forceupdate.number_one");
+			}
+		}
 		BIStartScreen(false);
 	}
 

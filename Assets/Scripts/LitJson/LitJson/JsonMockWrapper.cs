@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace LitJson
 {
-	public class JsonMockWrapper : IJsonWrapper, ICollection, IDictionary, IEnumerable, IList, IOrderedDictionary
+	public class JsonMockWrapper : IJsonWrapper, IList, IOrderedDictionary, ICollection, IEnumerable, IDictionary
 	{
 		bool IList.IsFixedSize
 		{
@@ -100,6 +100,17 @@ namespace LitJson
 			}
 		}
 
+		object IOrderedDictionary.this[int idx]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
 		public bool IsArray
 		{
 			get
@@ -171,6 +182,11 @@ namespace LitJson
 			return 0;
 		}
 
+		public JsonType GetJsonType()
+		{
+			return JsonType.None;
+		}
+
 		public long GetLong()
 		{
 			return 0L;
@@ -178,7 +194,7 @@ namespace LitJson
 
 		public string GetString()
 		{
-			return string.Empty;
+			return "";
 		}
 
 		public void SetBoolean(bool val)
@@ -207,7 +223,7 @@ namespace LitJson
 
 		public string ToJson()
 		{
-			return string.Empty;
+			return "";
 		}
 
 		public void ToJson(JsonWriter writer)
@@ -280,18 +296,13 @@ namespace LitJson
 		{
 			return null;
 		}
-        object IOrderedDictionary.this[int index]
-        {
-            get { return null; }
-            set { }
-        }
 
-        void IOrderedDictionary.Insert(int index, object key, object value)
-        {
-        }
+		void IOrderedDictionary.Insert(int i, object k, object v)
+		{
+		}
 
-        void IOrderedDictionary.RemoveAt(int index)
-        {
-        }
-    }
+		void IOrderedDictionary.RemoveAt(int i)
+		{
+		}
+	}
 }

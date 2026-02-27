@@ -285,9 +285,9 @@ namespace Mix.Assets
 
 		public void CheckDiskSpace(Action aCallback = null)
 		{
-			long freeBytes = (long)Service.Get<MemoryMonitorManager>().GetFreeBytes();
-			long totalBytes = (long)Service.Get<MemoryMonitorManager>().GetTotalBytes();
-			float num = (float)((double)freeBytes / (double)totalBytes);
+			long freeBytes = 10L;
+            long totalBytes = 2L;
+			float num = freeBytes / totalBytes;
 			long num2 = Caching.spaceOccupied + freeBytes - 300000000;
 			if (num2 < 0)
 			{

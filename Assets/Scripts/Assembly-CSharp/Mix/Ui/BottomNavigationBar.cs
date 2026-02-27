@@ -40,7 +40,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = null;
 			if (ProfileButton.GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest = new NavigationRequest("Prefabs/Screens/AvatarEditor/AvatarEditorScreen", new TransitionAnimations());
 				navigationRequest.AddData("mode", AvatarEditorController.EDITOR_MODES.EDITOR);
 			}
@@ -56,7 +55,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = new NavigationRequest("Prefabs/Screens/Conversations/ConversationsScreen", new TransitionNone());
 			if (ChatsButton.GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest.AddData("startConversation", true);
 			}
 			MonoSingleton<NavigationManager>.Instance.AddRequest(navigationRequest);
@@ -73,7 +71,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = new NavigationRequest("Prefabs/Screens/Friends/FriendsScreen", new TransitionNone());
 			if (FriendsButton.GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest.AddData("qrCode", true);
 			}
 			MonoSingleton<NavigationManager>.Instance.AddRequest(navigationRequest);

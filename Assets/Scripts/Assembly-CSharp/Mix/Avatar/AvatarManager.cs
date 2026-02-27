@@ -22,7 +22,7 @@ namespace Mix.Avatar
 	{
 		public sealed class GenerateSnapshotFromDna_003Ec__AnonStorey22A
 		{
-            public sealed class GenerateSnapshotFromDna_003Ec__AnonStorey22B
+			public sealed class GenerateSnapshotFromDna_003Ec__AnonStorey22B
 			{
 				internal bool success;
 
@@ -39,7 +39,7 @@ namespace Mix.Avatar
 				}
 			}
 
-            public sealed class GenerateSnapshotFromDna_003Ec__AnonStorey22C
+			public sealed class GenerateSnapshotFromDna_003Ec__AnonStorey22C
 			{
 				internal bool compositeResult;
 

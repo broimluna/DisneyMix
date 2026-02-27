@@ -1,90 +1,180 @@
 using System;
-using System.IO;
-using System.Globalization;
 using UnityEngine;
 
 namespace Disney.MobileNetwork
 {
-    public class EnvironmentManagerWindows : EnvironmentManager
-    {
-        protected override void _Init()
-        {
-            // Windows-specific initialization
-            mBundleIdentifier = Application.identifier;
-            mBundleVersionCode = Application.version;
+	public class EnvironmentManagerAndroid : EnvironmentManager
+	{
+		private AndroidJavaObject m_androidActivity;
 
-            string normalizedVersion = NormalizeVersionString(mBundleVersionCode);
-            if (!string.IsNullOrEmpty(normalizedVersion))
-            {
-                // Ensure we have at least Major.Minor for Version class
-                if (!normalizedVersion.Contains(".")) normalizedVersion += ".0";
-                mBundleVersion = new Version(normalizedVersion);
-            }
-            else
-            {
-                mBundleVersion = new Version(0, 0, 0);
-            }
+		private AndroidJavaObject m_androidContext;
 
-            BuildSettings.LoadSettings();
-        }
+		private AndroidJavaObject m_androidEnvironmentManager;
 
-        protected override int _GetDiskSpaceFreeMegabytes()
-        {
-            try
-            {
-                // Get the drive root where the persistent data is stored (usually C:\)
-                string root = Path.GetPathRoot(Application.persistentDataPath);
-                DriveInfo drive = new DriveInfo(root);
-                return (int)(drive.AvailableFreeSpace / (1024 * 1024));
-            }
-            catch
-            {
-                return -1;
-            }
-        }
+		public AndroidJavaObject AndroidActivity
+		{
+			get
+			{
+				return m_androidActivity;
+			}
+		}
 
-        protected override string _GetLocale()
-        {
-            // Returns strings like "en-US"
-            return CultureInfo.CurrentCulture.Name;
-        }
+		public AndroidJavaObject AndroidContext
+		{
+			get
+			{
+				return m_androidContext;
+			}
+		}
 
-        protected override string _GetDeviceLanguage()
-        {
-            // Returns the language as recognized by Unity
-            return Application.systemLanguage.ToString();
-        }
+		protected override string _SKU
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(EnvironmentManager.mSKU))
+				{
+					EnvironmentManager.mSKU = m_androidEnvironmentManager.Call<string>("getSKU", new object[0]);
+				}
+				return EnvironmentManager.mSKU;
+			}
+		}
 
-        protected override bool _GetIsMusicPlaying()
-        {
-            // Windows doesn't easily expose if 'Spotify' or 'iTunes' is playing
-            // without deep Win32 API hooks. Usually safe to return false.
-            return false;
-        }
+		protected override string _SKUPluginManifestJson
+		{
+			get
+			{
+				return m_androidEnvironmentManager.Call<string>("getSKUPluginManifestJson", new object[0]);
+			}
+		}
 
-        protected override bool _GetAreHeadphonesConnected()
-        {
-            // On Windows, the OS manages audio routing. Unity rarely needs to know.
-            return false;
-        }
+		public override void ShowAlert(ShowAlertDelegate showAlertDelegate, string title, string message, string viewButtonText, string cancelButtonText)
+		{
+			base.ShowAlert(showAlertDelegate, title, message, viewButtonText, cancelButtonText);
+			m_androidEnvironmentManager.Call("showAlert", title, message, viewButtonText, cancelButtonText);
+		}
 
-        public override void ShowAlert(ShowAlertDelegate showAlertDelegate, string title, string message, string viewButtonText, string cancelButtonText)
-        {
-            base.ShowAlert(showAlertDelegate, title, message, viewButtonText, cancelButtonText);
+		protected override void _Init()
+		{
+			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+			{
+				m_androidActivity = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
+				m_androidContext = m_androidActivity.Call<AndroidJavaObject>("getApplicationContext", new object[0]);
+			}
+			using (AndroidJavaClass androidJavaClass2 = new AndroidJavaClass("com.disney.mobilenetwork.utils.EnvironmentManager"))
+			{
+				if (androidJavaClass2 != null)
+				{
+					m_androidEnvironmentManager = androidJavaClass2.CallStatic<AndroidJavaObject>("getInstance", new object[0]);
+					m_androidEnvironmentManager.Call("listenForHeadphonesConnected");
+				}
+			}
+			EnvironmentManager.mBundleIdentifier = _GetBundleIdentifier();
+			EnvironmentManager.mBundleVersionCode = _GetBundleVersionString();
+			string text = EnvironmentManager.NormalizeVersionString(EnvironmentManager.mBundleVersionCode);
+			if (!string.IsNullOrEmpty(text))
+			{
+				EnvironmentManager.mBundleVersion = new Version(text);
+			}
+			else
+			{
+				EnvironmentManager.mBundleVersion = new Version(0, 0, 0);
+			}
+			BuildSettings.LoadSettings();
+		}
 
-            // On Windows Standalone, you typically use a Unity UI Prefab for alerts.
-            // For a quick native system popup, you could use a DLLImport of User32.dll MessageBox
-            Debug.Log($"[Windows Alert] {title}: {message}");
+		private string _GetBundleIdentifier()
+		{
+			string result = null;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<string>("getBundleIdentifier", new object[0]);
+			}
+			return result;
+		}
 
-            // Automatically simulate "OK" for now, or trigger your UI system here
-            OnAlertViewDismissed("1");
-        }
+		private string _GetBundleVersionString()
+		{
+			string result = null;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<string>("getBundleVersion", new object[0]);
+			}
+			return result;
+		}
 
-        protected override void _ShowStatusBar(bool show, bool useLightColor)
-        {
-            // Windows doesn't have a mobile-style status bar. 
-            // Often used to toggle between Borderless Window and Exclusive Fullscreen.
-            Screen.fullScreen = !show;
-        }
-    }
+		protected override string _GetLocale()
+		{
+			string result = null;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<string>("getLocale", new object[0]);
+			}
+			return result;
+		}
+
+		protected override string _GetDeviceLanguage()
+		{
+			string result = null;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<string>("getDeviceLanguage", new object[0]);
+			}
+			return result;
+		}
+
+		protected override int _GetDiskSpaceFreeMegabytes()
+		{
+			int result = 0;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<int>("getDiskSpaceFreeMegabytes", new object[0]);
+			}
+			return result;
+		}
+
+		protected override bool _GetIsMusicPlaying()
+		{
+			bool result = false;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<bool>("getIsMusicPlaying", new object[0]);
+			}
+			return result;
+		}
+
+		protected override bool _GetAreHeadphonesConnected()
+		{
+			bool result = false;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<bool>("getAreHeadphonesConnected", new object[0]);
+			}
+			return result;
+		}
+
+		protected override bool _GetIsExternalLinksRestricted()
+		{
+			bool result = false;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<bool>("getIsExternalLinksRestricted", new object[0]);
+			}
+			return result;
+		}
+
+		protected override string _GetBuildSettingsJson()
+		{
+			string result = string.Empty;
+			if (m_androidEnvironmentManager != null)
+			{
+				result = m_androidEnvironmentManager.Call<string>("getBuildSettingsJson", new object[0]);
+			}
+			return result;
+		}
+
+		protected override void _ShowStatusBar(bool show, bool useLightColor)
+		{
+			m_androidEnvironmentManager.Call("showStatusBar", show);
+		}
+	}
 }

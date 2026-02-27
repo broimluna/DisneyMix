@@ -147,7 +147,7 @@ namespace Fabric
 			{
 				_randomNoRepeatIndexes[i] = i;
 			}
-            FabricShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
+            FBShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
 		}
 
 		private int GetNextRandomNoRepeatIndex()
@@ -158,7 +158,7 @@ namespace Fabric
 				if (_randomNoRepeatIndex == -1 || _randomNoRepeatIndex >= _audioClips.Length)
 				{
 					int num = _randomNoRepeatIndexes[_randomNoRepeatIndexes.Length - 1];
-                    FabricShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
+                    FBShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
 					if (num == _randomNoRepeatIndexes[0])
 					{
 						int num2 = _randomNoRepeatIndexes[0];

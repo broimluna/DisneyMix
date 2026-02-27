@@ -92,7 +92,7 @@ namespace Fabric
 			{
 				_randomNoRepeatIndexes[i] = i;
 			}
-			FabricShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
+			FBShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
 		}
 
 		internal override void PlayInternal(ComponentInstance zComponentInstance, float target, float curve, bool dontPlayComponents)
@@ -117,7 +117,7 @@ namespace Fabric
 				if (_randomNoRepeatIndex == -1 || _randomNoRepeatIndex >= _components.Count)
 				{
 					int num = _randomNoRepeatIndexes[_randomNoRepeatIndexes.Length - 1];
-                    FabricShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
+                    FBShuffle<int>.Shuffle(_randomNoRepeatIndexes, _randomComponents);
 					if (num == _randomNoRepeatIndexes[0])
 					{
 						int num2 = _randomNoRepeatIndexes[0];

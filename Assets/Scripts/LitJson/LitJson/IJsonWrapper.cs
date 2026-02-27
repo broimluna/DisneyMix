@@ -3,27 +3,50 @@ using System.Collections.Specialized;
 
 namespace LitJson
 {
-	public interface IJsonWrapper : ICollection, IDictionary, IEnumerable, IList, IOrderedDictionary
+	public interface IJsonWrapper : IList, IOrderedDictionary, ICollection, IEnumerable, IDictionary
 	{
-		bool IsArray { get; }
+		bool IsArray
+		{
+			get;
+		}
 
-		bool IsBoolean { get; }
+		bool IsBoolean
+		{
+			get;
+		}
 
-		bool IsDouble { get; }
+		bool IsDouble
+		{
+			get;
+		}
 
-		bool IsInt { get; }
+		bool IsInt
+		{
+			get;
+		}
 
-		bool IsLong { get; }
+		bool IsLong
+		{
+			get;
+		}
 
-		bool IsObject { get; }
+		bool IsObject
+		{
+			get;
+		}
 
-		bool IsString { get; }
+		bool IsString
+		{
+			get;
+		}
 
 		bool GetBoolean();
 
 		double GetDouble();
 
 		int GetInt();
+
+		JsonType GetJsonType();
 
 		long GetLong();
 

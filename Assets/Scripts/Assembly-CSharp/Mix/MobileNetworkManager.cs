@@ -9,10 +9,10 @@ namespace Mix
 		public void Init()
 		{
 			InitEnvironmentManager();
-			InitKochava();
-			InitAnalytics();
+			//InitKochava();
+			//InitAnalytics();
 			InitHockeyAppManager();
-			InitReferralStore();
+			//InitReferralStore();
 		}
 
 		public void InitEnvironmentManager()

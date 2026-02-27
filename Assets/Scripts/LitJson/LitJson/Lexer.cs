@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace LitJson
@@ -35,6 +36,114 @@ namespace LitJson
 		private int token;
 
 		private int unichar;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache0;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache1;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache2;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache3;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache4;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache5;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache6;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache7;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache8;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache9;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheA;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheB;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheC;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheD;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheE;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cacheF;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache10;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache11;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache12;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache13;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache14;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache15;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache16;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache17;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache18;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache19;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache1A;
+
+		[CompilerGenerated]
+		private static StateHandler _003C_003Ef__mg_0024cache1B;
+
+		public bool AllowComments
+		{
+			get
+			{
+				return allow_comments;
+			}
+			set
+			{
+				allow_comments = value;
+			}
+		}
+
+		public bool AllowSingleQuotedStrings
+		{
+			get
+			{
+				return allow_single_quoted_strings;
+			}
+			set
+			{
+				allow_single_quoted_strings = value;
+			}
+		}
 
 		public bool EndOfInput
 		{
@@ -109,15 +218,65 @@ namespace LitJson
 		{
 			fsm_handler_table = new StateHandler[28]
 			{
-				State1, State2, State3, State4, State5, State6, State7, State8, State9, State10,
-				State11, State12, State13, State14, State15, State16, State17, State18, State19, State20,
-				State21, State22, State23, State24, State25, State26, State27, State28
+				State1,
+				State2,
+				State3,
+				State4,
+				State5,
+				State6,
+				State7,
+				State8,
+				State9,
+				State10,
+				State11,
+				State12,
+				State13,
+				State14,
+				State15,
+				State16,
+				State17,
+				State18,
+				State19,
+				State20,
+				State21,
+				State22,
+				State23,
+				State24,
+				State25,
+				State26,
+				State27,
+				State28
 			};
 			fsm_return_table = new int[28]
 			{
-				65542, 0, 65537, 65537, 0, 65537, 0, 65537, 0, 0,
-				65538, 0, 0, 0, 65539, 0, 0, 65540, 65541, 65542,
-				0, 0, 65541, 65542, 0, 0, 0, 0
+				65542,
+				0,
+				65537,
+				65537,
+				0,
+				65537,
+				0,
+				65537,
+				0,
+				0,
+				65538,
+				0,
+				0,
+				0,
+				65539,
+				0,
+				0,
+				65540,
+				65541,
+				65542,
+				0,
+				0,
+				65541,
+				65542,
+				0,
+				0,
+				0,
+				0
 			};
 		}
 

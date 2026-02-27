@@ -495,7 +495,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = new NavigationRequest("Prefabs/Screens/Friends/FriendsScreen", new TransitionNone());
 			if (base.transform.Find("UI_FG_Holder/UI_FG_ConversationsScreen/BottomNav/FriendsBtn").GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest.AddData("qrCode", true);
 			}
 			MonoSingleton<NavigationManager>.Instance.AddRequest(navigationRequest);
@@ -517,7 +516,6 @@ namespace Mix.Ui
 			NavigationRequest navigationRequest = null;
 			if (base.transform.Find("UI_FG_Holder/UI_FG_ConversationsScreen/BottomNav/ProfileBtn").GetComponent<PressureSensitiveButton>().HardPress)
 			{
-				Handheld.Vibrate();
 				navigationRequest = new NavigationRequest("Prefabs/Screens/AvatarEditor/AvatarEditorScreen", new TransitionAnimations());
 				navigationRequest.AddData("mode", AvatarEditorController.EDITOR_MODES.EDITOR);
 			}

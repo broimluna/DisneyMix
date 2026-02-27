@@ -30,7 +30,6 @@ namespace Mix.Ui
 			string name = ((!MonoSingleton<AvatarManager>.Instance.AvatarHasGeo(Friend.Avatar)) ? "ImageTarget" : "ImageTarget_Geo");
 			Transform imageTarget = gameObject2.transform.Find(name);
 			int size = (int)imageTarget.GetComponent<RectTransform>().rect.height;
-
 			UnityAction listener = null;
 			listener = delegate
 			{

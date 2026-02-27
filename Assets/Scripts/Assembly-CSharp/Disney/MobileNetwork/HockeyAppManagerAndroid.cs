@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +8,32 @@ namespace Disney.MobileNetwork
 	{
 		public override void ForceCrash()
 		{
-			AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.disney.mobilenetwork.plugins.HockeyAppPlugin");
-			androidJavaClass.CallStatic("forceCrash");
+			try
+			{
+				using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.disney.mobilenetwork.plugins.HockeyAppPlugin"))
+				{
+					androidJavaClass.CallStatic("forceCrash");
+				}
+			}
+			catch (Exception ex)
+			{
+				Debug.LogWarning("HockeyApp ForceCrash failed (plugin missing?): " + ex.Message);
+			}
 		}
 
 		private string GetVersion()
 		{
-			string text = null;
-			AndroidJavaClass androidJavaClass = new AndroidJavaClass("net.hockeyapp.unity.HockeyUnityPlugin");
-			return androidJavaClass.CallStatic<string>("getAppVersion", new object[0]);
+			try
+			{
+				using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("net.hockeyapp.unity.HockeyUnityPlugin"))
+				{
+					return androidJavaClass.CallStatic<string>("getAppVersion", new object[0]);
+				}
+			}
+			catch
+			{
+				return "0.0.0";
+			}
 		}
 
 		protected override List<string> GetLogHeaders()

@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Reflection;
 using DeviceDB;
 
 namespace Disney.Mix.SDK.Internal
@@ -42,9 +43,11 @@ namespace Disney.Mix.SDK.Internal
 
 		static ChatMessageDocument()
 		{
+			ParameterExpression parameterExpression = Expression.Parameter(typeof(ChatMessageDocument), "m");
+			ParameterExpression parameterExpression2 = Expression.Parameter(typeof(ChatMessageDocument), "m");
 			ChatMessageIdFieldName = FieldNameGetter.Get((ChatMessageDocument m) => m.ChatMessageId);
-			CreatedFieldName = FieldNameGetter.Get((ChatMessageDocument m) => m.Created);
-			SequenceNumberFieldName = FieldNameGetter.Get((ChatMessageDocument m) => m.SequenceNumber);
+			CreatedFieldName = FieldNameGetter.Get(Expression.Lambda<Func<ChatMessageDocument, long>>(Expression.Field(parameterExpression, typeof(ChatMessageDocument).GetField(nameof(ChatMessageId))), new ParameterExpression[1] { parameterExpression }));
+			SequenceNumberFieldName = FieldNameGetter.Get(Expression.Lambda<Func<ChatMessageDocument, long>>(Expression.Field(parameterExpression2, typeof(ChatMessageDocument).GetField(nameof(SequenceNumber))), new ParameterExpression[1] { parameterExpression2 }));
 		}
 	}
 }

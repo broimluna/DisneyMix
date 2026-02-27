@@ -6,46 +6,81 @@ namespace Disney.Native
 	public class NativeAndroidVideoPlayback : NativeVideoPlayback
 	{
 		private AndroidJavaClass JavaClass;
-
 		private Action callback;
+		private bool isAvailable;
 
 		public NativeAndroidVideoPlayback()
 		{
 			Initialize();
 		}
 
-		public void OnApplicationPause(bool aState)
-		{
-			if (JavaClass != null)
-			{
-				JavaClass.CallStatic("OnApplicationPause", aState);
-			}
-		}
-
 		public void Initialize()
 		{
-			JavaClass = new AndroidJavaClass("com.disney.nativevideoplayback.NativeVideoPlayback");
+#if UNITY_ANDROID && !UNITY_EDITOR
+			try
+			{
+				JavaClass = new AndroidJavaClass("com.disney.nativevideoplayback.NativeVideoPlayback");
+				isAvailable = JavaClass != null;
+			}
+			catch (Exception ex)
+			{
+				Debug.LogWarning("[NativeAndroidVideoPlayback] Plugin not found. Video playback disabled. " + ex.Message);
+				isAvailable = false;
+				JavaClass = null;
+			}
+#else
+			isAvailable = false;
+			JavaClass = null;
+#endif
+		}
+
+		public void OnApplicationPause(bool aState)
+		{
+			if (!isAvailable || JavaClass == null) return;
+			try { JavaClass.CallStatic("OnApplicationPause", aState); } catch {}
 		}
 
 		public override bool IsVideoPlaying()
 		{
-			return JavaClass.CallStatic<bool>("IsVideoPlaying", new object[0]);
+			if (!isAvailable || JavaClass == null) return false;
+			try { return JavaClass.CallStatic<bool>("IsVideoPlaying", new object[0]); } catch { return false; }
 		}
 
 		public override bool IsFullScreen()
 		{
-			return JavaClass.CallStatic<bool>("IsFullScreen", new object[0]);
+			if (!isAvailable || JavaClass == null) return false;
+			try { return JavaClass.CallStatic<bool>("IsFullScreen", new object[0]); } catch { return false; }
 		}
 
 		public override void Play(string aURL, Rect aRect, Action aCallback = null)
 		{
 			callback = aCallback;
-			JavaClass.CallStatic("PlayVideo", aURL, (int)aRect.x, (int)aRect.y, (int)aRect.width, (int)aRect.height);
+			if (!isAvailable || JavaClass == null)
+			{
+				// Simulate immediate completion if video can't play
+				if (callback != null)
+				{
+					callback();
+					callback = null;
+				}
+				return;
+			}
+
+			try
+			{
+				JavaClass.CallStatic("PlayVideo", aURL, (int)aRect.x, (int)aRect.y, (int)aRect.width, (int)aRect.height);
+			}
+			catch (Exception ex)
+			{
+				Debug.LogWarning("[NativeAndroidVideoPlayback] Play failed: " + ex.Message);
+				if (callback != null) { callback(); callback = null; }
+			}
 		}
 
 		public override void Stop()
 		{
-			JavaClass.CallStatic("StopVideo");
+			if (!isAvailable || JavaClass == null) return;
+			try { JavaClass.CallStatic("StopVideo"); } catch {}
 		}
 
 		public override void Unload()
@@ -55,17 +90,20 @@ namespace Disney.Native
 				callback();
 				callback = null;
 			}
-			JavaClass.CallStatic("UnloadVideo");
+			if (!isAvailable || JavaClass == null) return;
+			try { JavaClass.CallStatic("UnloadVideo"); } catch {}
 		}
 
 		public override void Pause(bool aState)
 		{
-			JavaClass.CallStatic("PauseVideo", aState);
+			if (!isAvailable || JavaClass == null) return;
+			try { JavaClass.CallStatic("PauseVideo", aState); } catch {}
 		}
 
 		public override void UpdateDragBounds(int aX, int aY, int aWidth, int aHeight)
 		{
-			JavaClass.CallStatic("UpdateDragBounds", aX, aY, aWidth, aHeight);
+			if (!isAvailable || JavaClass == null) return;
+			try { JavaClass.CallStatic("UpdateDragBounds", aX, aY, aWidth, aHeight); } catch {}
 		}
 	}
 }

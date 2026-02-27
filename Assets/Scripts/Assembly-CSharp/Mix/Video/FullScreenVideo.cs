@@ -54,7 +54,6 @@ namespace Mix.Video
 		{
 			IsVideoPlaying = true;
 			float startTime = Time.realtimeSinceStartup;
-			Handheld.PlayFullScreenMovie(aFilePath, Color.black, FullScreenMovieControlMode.CancelOnInput, FullScreenMovieScalingMode.AspectFit);
 			yield return new WaitForSeconds(0.1f);
 			float endVideoTime = Time.realtimeSinceStartup;
 			if (endVideoTime - startTime < VideoPlayTime)

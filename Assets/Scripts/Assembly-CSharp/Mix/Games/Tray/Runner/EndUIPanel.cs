@@ -140,7 +140,7 @@ namespace Mix.Games.Tray.Runner
 			if (runnerGame.lives > 0)
 			{
 				s.AppendInterval(delayBetweenAddingHeartsToScore);
-                s.AppendCallback(() => mHeartCount.Show()); 
+				s.AppendCallback(() => mHeartCount.Show());
 				s.AppendInterval(delayForHeartCounterToAppear);
 				for (int num2 = runnerGame.lives; num2 > 0; num2--)
 				{
@@ -157,7 +157,7 @@ namespace Mix.Games.Tray.Runner
 					s.AppendInterval(delayBetweenAddingHeartsToScore);
 				}
 				s.AppendInterval(delayBeforeShowingHint);
-                s.AppendCallback(() => mHeartCount.Show());
+                s.AppendCallback(() => mHeartCount.Hide());
             }
 			s.AppendInterval(delayBeforeShowingHint);
 			s.AppendCallback(delegate

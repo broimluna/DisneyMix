@@ -177,7 +177,6 @@ namespace Mix.Ui
 			}
 			if (mediaIsVideo && File.Exists(filePath))
 			{
-				Handheld.PlayFullScreenMovie("file://" + filePath, Color.black, FullScreenMovieControlMode.Full, FullScreenMovieScalingMode.AspectFit);
 			}
 			else
 			{

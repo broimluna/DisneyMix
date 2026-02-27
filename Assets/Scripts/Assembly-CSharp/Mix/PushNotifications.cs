@@ -62,12 +62,8 @@ namespace Mix
 			switch (UnityEngine.Application.platform)
 			{
 			case RuntimePlatform.IPhonePlayer:
-				pushNotificationClient = new ApplePushNotificationServiceClient();
-				service = PushNotificationService.ApplePushNotificationService;
 				break;
 			case RuntimePlatform.Android:
-				pushNotificationClient = new GoogleCloudMessagingClient(ExternalizedConstants.GcmSenderId);
-				service = PushNotificationService.GoogleCloudMessaging;
 				break;
 			}
 			if (pushNotificationClient != null)

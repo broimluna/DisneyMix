@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace LitJson
@@ -36,11 +37,55 @@ namespace LitJson
 
 		private JsonToken token;
 
+		public bool AllowComments
+		{
+			get
+			{
+				return lexer.AllowComments;
+			}
+			set
+			{
+				lexer.AllowComments = value;
+			}
+		}
+
+		public bool AllowSingleQuotedStrings
+		{
+			get
+			{
+				return lexer.AllowSingleQuotedStrings;
+			}
+			set
+			{
+				lexer.AllowSingleQuotedStrings = value;
+			}
+		}
+
 		public bool SkipNonMembers
 		{
 			get
 			{
 				return skip_non_members;
+			}
+			set
+			{
+				skip_non_members = value;
+			}
+		}
+
+		public bool EndOfInput
+		{
+			get
+			{
+				return end_of_input;
+			}
+		}
+
+		public bool EndOfJson
+		{
+			get
+			{
+				return end_of_json;
 			}
 		}
 
@@ -70,6 +115,11 @@ namespace LitJson
 		{
 		}
 
+		public JsonReader(TextReader reader)
+			: this(reader, false)
+		{
+		}
+
 		private JsonReader(TextReader reader, bool owned)
 		{
 			if (reader == null)
@@ -80,7 +130,7 @@ namespace LitJson
 			parser_return = false;
 			read_started = false;
 			automaton_stack = new Stack<int>();
-			automaton_stack.Push(65553);
+			automaton_stack.Push(65555);
 			automaton_stack.Push(65543);
 			lexer = new Lexer(reader);
 			end_of_input = false;
@@ -94,42 +144,48 @@ namespace LitJson
 		{
 			parse_table = new Dictionary<int, IDictionary<int, int[]>>();
 			TableAddRow(ParserToken.Array);
-			TableAddCol(ParserToken.Array, 91, 91, 65549);
+			TableAddCol(ParserToken.Array, 91, 91, 65551);
 			TableAddRow(ParserToken.ArrayPrime);
-			TableAddCol(ParserToken.ArrayPrime, 34, 65550, 65551, 93);
-			TableAddCol(ParserToken.ArrayPrime, 91, 65550, 65551, 93);
+			TableAddCol(ParserToken.ArrayPrime, 34, 65552, 65553, 93);
+			TableAddCol(ParserToken.ArrayPrime, 91, 65552, 65553, 93);
 			TableAddCol(ParserToken.ArrayPrime, 93, 93);
-			TableAddCol(ParserToken.ArrayPrime, 123, 65550, 65551, 93);
-			TableAddCol(ParserToken.ArrayPrime, 65537, 65550, 65551, 93);
-			TableAddCol(ParserToken.ArrayPrime, 65538, 65550, 65551, 93);
-			TableAddCol(ParserToken.ArrayPrime, 65539, 65550, 65551, 93);
-			TableAddCol(ParserToken.ArrayPrime, 65540, 65550, 65551, 93);
+			TableAddCol(ParserToken.ArrayPrime, 123, 65552, 65553, 93);
+			TableAddCol(ParserToken.ArrayPrime, 65537, 65552, 65553, 93);
+			TableAddCol(ParserToken.ArrayPrime, 65538, 65552, 65553, 93);
+			TableAddCol(ParserToken.ArrayPrime, 65539, 65552, 65553, 93);
+			TableAddCol(ParserToken.ArrayPrime, 65540, 65552, 65553, 93);
 			TableAddRow(ParserToken.Object);
 			TableAddCol(ParserToken.Object, 123, 123, 65545);
 			TableAddRow(ParserToken.ObjectPrime);
-			TableAddCol(ParserToken.ObjectPrime, 34, 65546, 65547, 125);
+			TableAddCol(ParserToken.ObjectPrime, 34, 65546, 65549, 125);
 			TableAddCol(ParserToken.ObjectPrime, 125, 125);
+			TableAddCol(ParserToken.ObjectPrime, 65537, 65547, 65548, 125);
+			TableAddRow(ParserToken.Colon);
+			TableAddCol(ParserToken.Colon, 65537, 65537, 58, 65552);
 			TableAddRow(ParserToken.Pair);
-			TableAddCol(ParserToken.Pair, 34, 65552, 58, 65550);
+			TableAddCol(ParserToken.Pair, 34, 65554, 58, 65552);
 			TableAddRow(ParserToken.PairRest);
-			TableAddCol(ParserToken.PairRest, 44, 44, 65546, 65547);
-			TableAddCol(ParserToken.PairRest, 125, 65554);
+			TableAddCol(ParserToken.PairRest, 44, 44, 65546, 65549);
+			TableAddCol(ParserToken.PairRest, 125, 65556);
+			TableAddRow(ParserToken.ColonRest);
+			TableAddCol(ParserToken.ColonRest, 44, 44, 65547, 65548);
+			TableAddCol(ParserToken.ColonRest, 125, 65556);
 			TableAddRow(ParserToken.String);
 			TableAddCol(ParserToken.String, 34, 34, 65541, 34);
 			TableAddRow(ParserToken.Text);
-			TableAddCol(ParserToken.Text, 91, 65548);
+			TableAddCol(ParserToken.Text, 91, 65550);
 			TableAddCol(ParserToken.Text, 123, 65544);
 			TableAddRow(ParserToken.Value);
-			TableAddCol(ParserToken.Value, 34, 65552);
-			TableAddCol(ParserToken.Value, 91, 65548);
+			TableAddCol(ParserToken.Value, 34, 65554);
+			TableAddCol(ParserToken.Value, 91, 65550);
 			TableAddCol(ParserToken.Value, 123, 65544);
 			TableAddCol(ParserToken.Value, 65537, 65537);
 			TableAddCol(ParserToken.Value, 65538, 65538);
 			TableAddCol(ParserToken.Value, 65539, 65539);
 			TableAddCol(ParserToken.Value, 65540, 65540);
 			TableAddRow(ParserToken.ValueRest);
-			TableAddCol(ParserToken.ValueRest, 44, 44, 65550, 65551);
-			TableAddCol(ParserToken.ValueRest, 93, 65554);
+			TableAddCol(ParserToken.ValueRest, 44, 44, 65552, 65553);
+			TableAddCol(ParserToken.ValueRest, 93, 65556);
 		}
 
 		private static void TableAddCol(ParserToken row, int col, params int[] symbols)
@@ -148,7 +204,7 @@ namespace LitJson
 			int result2;
 			long result3;
 			ulong result4;
-			if ((number.IndexOf('.') != -1 || number.IndexOf('e') != -1 || number.IndexOf('E') != -1) && double.TryParse(number, out result))
+			if ((number.IndexOf('.') != -1 || number.IndexOf('e') != -1 || number.IndexOf('E') != -1) && double.TryParse(number, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out result))
 			{
 				token = JsonToken.Double;
 				token_value = result;
@@ -235,6 +291,10 @@ namespace LitJson
 			{
 				token = JsonToken.PropertyName;
 			}
+			else if (current_symbol == 65547)
+			{
+				token = JsonToken.PropertyName;
+			}
 			else if (current_symbol == 65538)
 			{
 				token = JsonToken.Boolean;
@@ -283,7 +343,7 @@ namespace LitJson
 			{
 				end_of_json = false;
 				automaton_stack.Clear();
-				automaton_stack.Push(65553);
+				automaton_stack.Push(65555);
 				automaton_stack.Push(65543);
 			}
 			parser_in_string = false;
@@ -302,7 +362,7 @@ namespace LitJson
 			{
 				if (parser_return)
 				{
-					if (automaton_stack.Peek() == 65553)
+					if (automaton_stack.Peek() == 65555)
 					{
 						end_of_json = true;
 					}
@@ -327,7 +387,7 @@ namespace LitJson
 				{
 					throw new JsonException((ParserToken)current_input, inner_exception);
 				}
-				if (array[0] != 65554)
+				if (array[0] != 65556)
 				{
 					for (int num = array.Length - 1; num >= 0; num--)
 					{
@@ -335,7 +395,7 @@ namespace LitJson
 					}
 				}
 			}
-			if (automaton_stack.Peek() != 65553)
+			if (automaton_stack.Peek() != 65555)
 			{
 				throw new JsonException("Input doesn't evaluate to proper JSON text");
 			}

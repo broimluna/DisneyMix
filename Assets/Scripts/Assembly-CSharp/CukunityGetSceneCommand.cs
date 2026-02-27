@@ -87,10 +87,7 @@ public class CukunityGetSceneCommand : CukunityCommand
 		Type type = comp.GetType();
 		Dictionary<Type, SerializerMethod> dictionary = new Dictionary<Type, SerializerMethod>();
 		dictionary.Add(typeof(RectTransform), SerializeRectTransform);
-		// Remove or comment out the obsolete GUIText serializer registration
-		// dictionary.Add(typeof(GUIText), SerializeGUIText);
-		// Optionally, add support for UnityEngine.UI.Text instead:
-		dictionary.Add(typeof(Text), SerializeUIText);
+		dictionary.Add(typeof(Text), SerializeGUIText);
 		Dictionary<Type, SerializerMethod> dictionary2 = dictionary;
 		foreach (KeyValuePair<Type, SerializerMethod> item in dictionary2)
 		{
@@ -139,30 +136,20 @@ public class CukunityGetSceneCommand : CukunityCommand
 
 	public static void SerializeGUIElement(Component comp, Hashtable h)
 	{
-		// GUIElement is obsolete and removed. 
-		// If you need to serialize UI elements, consider using UnityEngine.UI.Image, UnityEngine.UI.Text, or TMPro.TextMeshProUGUI.
-		// For now, this method will do nothing to avoid obsolete API usage.
-	}
-
-	public static void SerializeGUITexture(Component comp, Hashtable h)
-	{
+		RectTransform rectTransform = comp.GetComponent<RectTransform>();
+		if (rectTransform != null)
+		{
+			AppendHint(h, "screen", SerializeRect(u.GetRectInPhysicalScreenSpace(rectTransform)));
+		}
 	}
 
 	public static void SerializeGUIText(Component comp, Hashtable h)
 	{
-		// GUIText is obsolete and has been removed from Unity.
-		// This method is intentionally left empty to avoid obsolete API usage.
-		// If you need to serialize text, use SerializeUIText for UnityEngine.UI.Text components.
-	}
-
-	// Add this new method to handle UnityEngine.UI.Text serialization
-	public static void SerializeUIText(Component comp, Hashtable h)
-	{
-		Text uiText = comp as Text;
-		if (uiText != null)
+		Text text = comp as Text;
+		if (text != null)
 		{
-			h["text"] = uiText.text;
-			AppendHint(h, "text", uiText.text);
+			h["text"] = text.text;
+			AppendHint(h, "text", text.text);
 		}
 	}
 

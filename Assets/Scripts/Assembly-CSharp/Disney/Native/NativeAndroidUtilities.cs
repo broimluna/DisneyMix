@@ -21,23 +21,23 @@ namespace Disney.Native
 
 		public void Initialize()
 		{
-			JavaClass = new AndroidJavaClass("com.disney.nativeutilities.NativeUtilities");
+			//JavaClass = new AndroidJavaClass("com.disney.nativeutilities.NativeUtilities");
 		}
 
 		public override void GotoApplicationSettings()
 		{
-			JavaClass.CallStatic("GotoApplicationSettings");
+			//JavaClass.CallStatic("GotoApplicationSettings");
 		}
 
 		public override void UnGZipFile(string aSourcePath, string aDestPath)
 		{
-			JavaClass.CallStatic("UnGZipFile", Encoding.UTF32.GetBytes(aSourcePath), Encoding.UTF32.GetBytes(aDestPath));
+			//JavaClass.CallStatic("UnGZipFile", Encoding.UTF32.GetBytes(aSourcePath), Encoding.UTF32.GetBytes(aDestPath));
 		}
 
 		public override bool HasPermissions(List<string> aPermissions)
 		{
 			List<string> list = ConvertPermissions(aPermissions);
-			return list != null && JavaClass.CallStatic<bool>("CheckPermissions", new object[1] { list.ToArray() });
+			return list != null;
 		}
 
 		public override bool AskForPermissions(List<string> aPermissions, Action<NativeUtilitiesPermissionResult> aCallback)
@@ -48,11 +48,7 @@ namespace Disney.Native
 			{
 				return false;
 			}
-			if (JavaClass.CallStatic<bool>("AskPermissions", new object[2]
-			{
-				permissions.ToArray(),
-				false
-			}))
+
 			{
 				permissionCallback = aCallback;
 				GenericPanel genericPanel = (GenericPanel)Singleton<PanelManager>.Instance.ShowPanel(Panels.GENERIC);
@@ -73,15 +69,10 @@ namespace Disney.Native
 				});
 				genericPanel.PanelClosedEvent += delegate
 				{
-					JavaClass.CallStatic<bool>("AskPermissions", new object[2]
-					{
-						permissions.ToArray(),
-						true
-					});
+
 				};
 				return true;
 			}
-			return false;
 		}
 
 		public void OnNativePermissionResponse(string aResult)

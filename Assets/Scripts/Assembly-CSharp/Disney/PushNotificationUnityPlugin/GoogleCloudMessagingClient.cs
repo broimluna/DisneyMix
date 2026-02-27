@@ -18,7 +18,7 @@ namespace Disney.PushNotificationUnityPlugin
 
 		private readonly string senderId;
 
-		private static readonly AndroidJavaClass UnityApiJavaClass = new AndroidJavaClass("com.disney.gcmunityplugin.UnityApi");
+		private static readonly AndroidJavaClass UnityApiJavaClass = new AndroidJavaClass("");
 
 		public event EventHandler<AbstractNotificationReceivedEventArgs> OnNotificationReceived = delegate
 		{
@@ -36,7 +36,7 @@ namespace Disney.PushNotificationUnityPlugin
 
 		public void Register()
 		{
-			UnityApiJavaClass.CallStatic("register", senderId.ToString());
+			//UnityApiJavaClass.CallStatic("register", senderId.ToString());
 		}
 
 		public void CheckForToken()
@@ -47,7 +47,7 @@ namespace Disney.PushNotificationUnityPlugin
 		public void Unregister()
 		{
 			state = State.Idle;
-			UnityApiJavaClass.CallStatic("unregister");
+			//UnityApiJavaClass.CallStatic("unregister");
 		}
 
 		public void Update()
@@ -58,12 +58,6 @@ namespace Disney.PushNotificationUnityPlugin
 				return;
 			case State.WaitingForToken:
 			{
-				string text = UnityApiJavaClass.CallStatic<string>("getToken", new object[0]);
-				if (text != null)
-				{
-					state = State.WaitingForNotifications;
-					this.OnTokenGenerated(this, new TokenGeneratedEventArgs(text));
-				}
 				return;
 			}
 			case State.WaitingForNotifications:
@@ -71,31 +65,24 @@ namespace Disney.PushNotificationUnityPlugin
 			}
 			while (true)
 			{
-				string text2 = UnityApiJavaClass.CallStatic<string>("getMessage", new object[0]);
-				if (text2 == null)
-				{
-					break;
-				}
-				Dictionary<string, object> userData = Json.Deserialize(text2) as Dictionary<string, object>;
-				NotificationReceivedEventArgs e = new NotificationReceivedEventArgs(userData);
-				this.OnNotificationReceived(this, e);
+				
 			}
 		}
 
 		public void OnPause()
 		{
-			UnityApiJavaClass.CallStatic("onPause");
+			//UnityApiJavaClass.CallStatic("onPause");
 		}
 
 		public void OnResume()
 		{
-			UnityApiJavaClass.CallStatic("onResume");
+			//UnityApiJavaClass.CallStatic("onResume");
 		}
 
 		public bool IsNotificationEnabled()
 		{
 			bool flag = true;
-			return UnityApiJavaClass.CallStatic<bool>("isNotificationEnabled", new object[0]);
+			return flag;
 		}
 	}
 }

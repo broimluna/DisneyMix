@@ -126,17 +126,23 @@ namespace Mix
 			{
 				MonoSingleton<ConnectionManager>.Instance.OnApplicationPausing(goingToBackground);
 			}
-			if (MonoSingleton<AssetManager>.Instance != null)
-			{
-			}
-			MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.Hide();
-			if (!MixSession.IsValidSession)
+
+			// FIXED: Safe null check for NativeKeyboard functionality
+            if (MonoSingleton<NativeKeyboardManager>.Instance != null &&
+                MonoSingleton<NativeKeyboardManager>.Instance.Keyboard != null)
+            {
+                MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.Hide();
+            }
+
+            if (!MixSession.IsValidSession)
 			{
 				return;
 			}
+			
 			if (goingToBackground)
 			{
 				MixSession.PauseSession();
+				// FIXED: Safe null check for AssetManager
 				if (MonoSingleton<AssetManager>.Instance != null)
 				{
 					MonoSingleton<AssetManager>.Instance.OnLowMemoryEvent();

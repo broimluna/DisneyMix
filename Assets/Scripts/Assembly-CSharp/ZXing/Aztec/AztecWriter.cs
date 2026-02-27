@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using ZXing.Aztec.Internal;
 using ZXing.Common;
-using Encoder = ZXing.Aztec.Internal.Encoder;
 
 namespace ZXing.Aztec
 {
@@ -62,7 +61,7 @@ namespace ZXing.Aztec
 			{
 				throw new ArgumentException("Can only encode AZTEC code, but got " + format);
 			}
-			AztecCode code = Encoder.encode(charset.GetBytes(contents), eccPercent, layers);
+			AztecCode code = ZXing.Aztec.Internal.Encoder.encode(charset.GetBytes(contents), eccPercent, layers);
 			return renderResult(code, width, height);
 		}
 

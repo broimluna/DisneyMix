@@ -5,8 +5,8 @@ namespace LitJson
 	[Flags]
 	public enum JsonIgnoreWhen
 	{
-		Never = 0,
-		Serializing = 1,
-		Deserializing = 2
+		Never = 0x0,
+		Serializing = 0x1,
+		Deserializing = 0x2
 	}
 }
