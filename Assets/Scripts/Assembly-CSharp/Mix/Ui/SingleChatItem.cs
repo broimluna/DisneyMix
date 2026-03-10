@@ -264,7 +264,7 @@ namespace Mix.Ui
 				deleteBtn = inst.transform.Find(name).GetComponent<RectTransform>();
 				itemBackground = inst.transform.Find("ItemBackground").gameObject;
 				HideDeleteBtn();
-				int num = (int)AccessibilityManager.Instance.GetAdjustedFontSize(component2.fontSize);
+				int num = 20;
 				component2.fontSize = ((num >= 48) ? 48 : num);
 				if (thread is IOfficialAccountChatThread)
 				{

@@ -477,6 +477,10 @@ namespace Mix.Ui
 
 		private void checkAgeBand()
 		{
+			Debug.Log("[REG] checkAgeBand called");
+			Debug.Log("[REG] Age=" + age + " DOB=" + year + "-" + month + "-" + day);
+			Debug.Log("[REG] AgeBandType=" + AgeBand.AgeBandType);
+
 			if (AgeBand.AgeBandType == AgeBandType.Child)
 			{
 				PoisonFlowVariable.SetBirthdate(year, month, day, AgeBand);
@@ -486,6 +490,13 @@ namespace Mix.Ui
 			{
 				Analytics.LogBirthdaySubmissionPass(age);
 			}
+
+			if (caller == null)
+			{
+				Debug.LogError("[REG] caller is null in EnterBirthdate.checkAgeBand");
+				return;
+			}
+
 			caller.OnBirthdateEntered(AgeBand, year, month, day);
 		}
 

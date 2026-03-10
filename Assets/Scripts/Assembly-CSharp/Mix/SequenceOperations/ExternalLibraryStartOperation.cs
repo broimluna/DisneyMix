@@ -20,7 +20,7 @@ namespace Mix.SequenceOperations
 			EnvironmentManager.ShowStatusBar(true);
 			//InitSecurityUtilsPlugin();
 			//InitAccessibilityPlugin();
-			//InitSystemTextPlugin();
+			InitSystemTextPlugin();
 			//InitMemoryMonitorPlugin();
 			//MonoSingleton<NativeVideoPlaybackManager>.Instance.Init();
 			//MonoSingleton<NativeKeyboardManager>.Instance.Init();

@@ -422,6 +422,12 @@ namespace Mix.Ui
 
 		void IEnterBirthdate.OnBirthdateEntered(IAgeBand aMyAgeBand, int aYear, int aMonth, int aDay)
 		{
+			Debug.Log("[REG] OnBirthdateEntered called");
+			Debug.Log("[REG] aMyAgeBand=" + (aMyAgeBand != null ? aMyAgeBand.AgeBandType.ToString() : "null"));
+			Debug.Log("[REG] adultAccountController null? " + (adultAccountController == null));
+			Debug.Log("[REG] childAccountController null? " + (childAccountController == null));
+			Debug.Log("[REG] enterBirthdateController null? " + (enterBirthdateController == null));
+
 			if (aMyAgeBand != null)
 			{
 				birthDay = aDay;

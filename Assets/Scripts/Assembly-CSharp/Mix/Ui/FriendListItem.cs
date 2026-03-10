@@ -244,7 +244,7 @@ namespace Mix.Ui
 				instance.transform.Find("OptionBars/NicknameInputBar/NicknameInput").GetComponent<NativeTextView>().KeyboardFocusChanged += OnKeyboardFocusChanged;
 			}
 			Text component = instance.transform.Find("FriendInfo/FriendNameText").GetComponent<Text>();
-			int num = (int)AccessibilityManager.Instance.GetAdjustedFontSize(component.fontSize);
+			int num = 20;
 			component.fontSize = ((num >= 48) ? 48 : num);
 			Transform imageTarget = ((!MonoSingleton<AvatarManager>.Instance.AvatarHasGeo(friend.Avatar)) ? instance.transform.Find("FriendInfo/AvatarImage/ImageTarget") : instance.transform.Find("FriendInfo/AvatarImage/Mask/ImageTarget_Geo"));
 			imageTargetSize = (int)imageTarget.GetComponent<RectTransform>().rect.height;

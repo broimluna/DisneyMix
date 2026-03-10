@@ -43,15 +43,7 @@ namespace Disney.MobileNetwork
 			{
 				aString = aString.Replace("\n", " ... ");
 			}
-			return androidPlugin.Call<string>("GenerateImageForString", new object[6]
-			{
-				Encoding.UTF32.GetBytes(aString),
-				aFont,
-				aFontSize,
-				text,
-				aMaxWidth,
-				aWordWrap
-			});
+			return "";
 		}
 
 		public override int GetIndexInTextAtPoint(string aString, string aFont, int aFontSize, float aMaxWidth, bool aWordWrap, float xPos, float yPos)

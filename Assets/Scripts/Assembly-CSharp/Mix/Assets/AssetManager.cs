@@ -325,7 +325,7 @@ namespace Mix.Assets
 		{
 			if (cpipeManager != null)
 			{
-				string fileUrl = cpipeManager.cpipe.GetFileUrl(aUrl);
+				string fileUrl = "";
 				if (string.IsNullOrEmpty(fileUrl))
 				{
 					return aUrl;

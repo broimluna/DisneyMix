@@ -124,9 +124,9 @@ namespace Mix
 		{
 			get
 			{
-				return ((ExternalizedConstant)externalizedConstants["guest_baseUrl"]).value;
-			}
-		}
+                return "http://localhost";
+            }
+        }
 
 		public static string GuestControllerClientId
 		{
@@ -204,31 +204,31 @@ namespace Mix
 		{
 			get
 			{
-				return ((ExternalizedConstant)externalizedConstants["cellophane_client_id_assets"]).value;
-			}
-		}
+                return "http://localhost";
+            }
+        }
 
 		public static string CpipeUrl
 		{
 			get
 			{
-				return ((ExternalizedConstant)externalizedConstants["cpipe_url"]).value;
-			}
-		}
+                return "http://localhost";
+            }
+        }
 
 		public static string MixPlatformServicesUrl
 		{
 			get
 			{
-				return ((ExternalizedConstant)externalizedConstants["mix_platform_services_url"]).value;
-			}
-		}
+                return "http://localhost";
+            }
+        }
 
 		public static string MixPlatformServicesCellophane
 		{
 			get
 			{
-				return ((ExternalizedConstant)externalizedConstants["mix_platform_services_cellophane"]).value;
+				return "http://localhost";
 			}
 		}
 
@@ -252,7 +252,8 @@ namespace Mix
 		public static void SetupEventHandlers()
 		{
 			Singleton<ConfigurationManager>.Instance.OnConfigurationRefreshed += HandleOnConfigurationRefreshed;
-		}
+			UnityEngine.Debug.Log("ExternalizedConstants:\nMixPlatformServiceURL: " + MixPlatformServicesUrl + "\nMixPlatformServicesCellophane: " + MixPlatformServicesCellophane + "\nGuestControllerUrl: " + GuestControllerUrl);
+        }
 
 		public static void HandleOnConfigurationRefreshed(object sender, ConfigurationRefreshEventArgs args)
 		{

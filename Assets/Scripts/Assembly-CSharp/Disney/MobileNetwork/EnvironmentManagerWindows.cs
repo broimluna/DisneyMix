@@ -30,7 +30,7 @@ namespace Disney.MobileNetwork
 
         protected override int _GetDiskSpaceFreeMegabytes()
         {
-            return 1048576000;
+            return 999999999;
 
         }
 

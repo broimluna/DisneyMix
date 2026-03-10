@@ -84,46 +84,17 @@ namespace Mix.Data
 
 		public void Refresh(CachePolicy aPolicy = CachePolicy.DefaultCacheControlProtocol)
 		{
-			Debug.Log("[ContentData] Refresh called with policy: " + aPolicy);
+				Debug.Log("[ContentData] Refresh called with policy: " + aPolicy);
 
 			try
 			{
-#if UNITY_ANDROID && !UNITY_EDITOR
-				// On Android StreamingAssets is inside the APK (jar:). We CANNOT use File.* directly.
-				// For now, just log and fail fast here; the file must be copied out using UnityWebRequest before this is called.
-				ParseJoeData(string.Empty + "contentdata.joe");
-				Caller.OnContentDataDone(null);
-#else
-				string sourceJoePath;
-				// Editor / Standalone: StreamingAssets is a real directory, safe for File IO.
-				sourceJoePath = Path.Combine(Application.StreamingAssetsPath, CONTENT_DATA_JOE_PATH);
-				string cacheDir = Path.Combine(Application.PersistentDataPath, "cache");
-				string cacheJoePath = Path.Combine(cacheDir, "contentfile.joe");
+				string sha = AssetManager.GetShaString("contentdata.joe.gz");
+				Debug.Log("[ContentData] Refresh: SHA for contentdata.joe.gz = " + sha);
 
-				Debug.Log("[ContentData] Refresh: sourceJoePath=" + sourceJoePath);
-				Debug.Log("[ContentData] Refresh: cacheDir=" + cacheDir);
-				Debug.Log("[ContentData] Refresh: cacheJoePath=" + cacheJoePath);
+				LoadParams aLoadParams = new LoadParams(sha, "contentdata.joe.gz", aPolicy);
+				Debug.Log("[ContentData] Refresh: calling AssetManager.LoadFileFromZip for contentdata.joe.gz -> contentdata.joe");
 
-				if (!Directory.Exists(cacheDir))
-				{
-					Debug.Log("[ContentData] Refresh: cacheDir does not exist, creating");
-					Directory.CreateDirectory(cacheDir);
-				}
-
-				if (File.Exists(sourceJoePath))
-				{
-					Debug.Log("[ContentData] Refresh: source JOE exists, copying to cache");
-					File.Copy(sourceJoePath, cacheJoePath, true);
-
-					Debug.Log("[ContentData] Refresh: calling ParseJoeData with " + cacheJoePath);
-					ParseJoeData(cacheJoePath);
-				}
-				else
-				{
-					Debug.LogError("[ContentData] Refresh: source JOE file not found at " + sourceJoePath);
-					Caller.OnContentDataDone("Source JOE file not found at " + sourceJoePath);
-				}
-#endif
+				MonoSingleton<AssetManager>.Instance.LoadFileFromZip("contentdata.joe.gz", "contentdata.joe", this, aLoadParams);
 			}
 			catch (Exception ex)
 			{

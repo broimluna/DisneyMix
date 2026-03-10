@@ -44,7 +44,7 @@ namespace Mix.Assets
 			userData = aUserData;
 			flow = new Flow(this, LoadParams);
 			flow.IsBundled = IsInBundle();
-			int fileVersion = MonoSingleton<AssetManager>.Instance.cpipeManager.cpipe.GetFileVersion(LoadParams.Url);
+			int fileVersion = 230;
 			LoadParams.CpipeManifestVersion = fileVersion;
 		}
 

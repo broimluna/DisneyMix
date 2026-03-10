@@ -49,13 +49,13 @@ namespace Mix.Ui
 
 		public GameObject TouErrorMessageGameObject;
 
-		public NativeTextView firstNameInput;
+		public InputField firstNameInput;
 
-		public NativeTextView lastNameInput;
+		public InputField lastNameInput;
 
-		public NativeTextView emailInput;
+		public InputField emailInput;
 
-		public NativeTextView passwordInput;
+		public InputField passwordInput;
 
 		public Text CountryText;
 
@@ -99,13 +99,23 @@ namespace Mix.Ui
 
 		private Dictionary<string, GameObject> legalDisclosures = new Dictionary<string, GameObject>();
 
+		private bool wasFirstNameFocused;
+
+		private bool wasLastNameFocused;
+
+		private bool wasEmailFocused;
+
+		private bool wasPasswordFocused;
+
 		private void Start()
 		{
-			firstNameInput.KeyboardFocusChanged += FirstNameInputFocusChanged;
-			lastNameInput.KeyboardFocusChanged += LastNameInputFocusChanged;
-			emailInput.KeyboardFocusChanged += EmailInputFocusChanged;
-			passwordInput.KeyboardFocusChanged += PasswordInputFocusChanged;
-			emailInput.KeyboardValueChanged += OnEmailValueChanged;
+			emailInput.onValueChanged.AddListener(OnEmailValueChanged);
+
+			wasFirstNameFocused = firstNameInput.isFocused;
+			wasLastNameFocused = lastNameInput.isFocused;
+			wasEmailFocused = emailInput.isFocused;
+			wasPasswordFocused = passwordInput.isFocused;
+
 			ScrollView component = ScrollViewGameObject.GetComponent<ScrollView>();
 			component.OnPointerDownDelegates = (ScrollView.OnPointerDownDelegate)Delegate.Combine(component.OnPointerDownDelegates, new ScrollView.OnPointerDownDelegate(OnScrollGotPointerDown));
 			MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.OnNativeKeyboardReturnKeyPressed += OnKeyboardReturnKey;
@@ -122,7 +132,7 @@ namespace Mix.Ui
 			base.transform.Find("ScrollView/Content/ToViewText").gameObject.SetActive(false);
 		}
 
-		private void FirstNameInputFocusChanged(NativeTextView aField, bool aFocus)
+		private void FirstNameInputFocusChanged(InputField aField, bool aFocus)
 		{
 			if (aFocus)
 			{
@@ -136,7 +146,7 @@ namespace Mix.Ui
 			}
 			else
 			{
-				errorFirstName = (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(firstNameInput.Value)) || (ageBand.Permissions.FirstName is IRegistrationPermissionOptional && firstNameInput.Value.Length != 0 && firstNameInput.Value.Trim().Length == 0);
+				errorFirstName = (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(firstNameInput.text)) || (ageBand.Permissions.FirstName is IRegistrationPermissionOptional && firstNameInput.text.Length != 0 && firstNameInput.text.Trim().Length == 0);
 				if (errorFirstName)
 				{
 					firstNameInput.transform.parent.gameObject.GetComponent<Image>().color = errorColor;
@@ -146,7 +156,7 @@ namespace Mix.Ui
 			}
 		}
 
-		private void LastNameInputFocusChanged(NativeTextView aField, bool aFocus)
+		private void LastNameInputFocusChanged(InputField aField, bool aFocus)
 		{
 			if (aFocus)
 			{
@@ -160,7 +170,7 @@ namespace Mix.Ui
 			}
 			else
 			{
-				errorLastName = (ageBand.Permissions.LastName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(lastNameInput.Value)) || (ageBand.Permissions.LastName is IRegistrationPermissionOptional && lastNameInput.Value.Length != 0 && lastNameInput.Value.Trim().Length == 0);
+				errorLastName = (ageBand.Permissions.LastName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(lastNameInput.text)) || (ageBand.Permissions.LastName is IRegistrationPermissionOptional && lastNameInput.text.Length != 0 && lastNameInput.text.Trim().Length == 0);
 				if (errorLastName)
 				{
 					lastNameInput.transform.parent.gameObject.GetComponent<Image>().color = errorColor;
@@ -170,7 +180,7 @@ namespace Mix.Ui
 			}
 		}
 
-		private void EmailInputFocusChanged(NativeTextView aField, bool aFocus)
+		private void EmailInputFocusChanged(InputField aField, bool aFocus)
 		{
 			if (aFocus)
 			{
@@ -184,7 +194,7 @@ namespace Mix.Ui
 			}
 			else
 			{
-				errorEmail = !DataChecker.IsValidEmail(emailInput.Value);
+				errorEmail = !DataChecker.IsValidEmail(emailInput.text);
 				if (errorEmail)
 				{
 					emailInput.transform.parent.gameObject.GetComponent<Image>().color = errorColor;
@@ -194,7 +204,7 @@ namespace Mix.Ui
 			}
 		}
 
-		private void PasswordInputFocusChanged(NativeTextView aField, bool aFocus)
+		private void PasswordInputFocusChanged(InputField aField, bool aFocus)
 		{
 			if (aFocus)
 			{
@@ -208,7 +218,7 @@ namespace Mix.Ui
 			}
 			else
 			{
-				errorPassword = DataChecker.IsNullEmptyOrJustWhiteSpace(passwordInput.Value);
+				errorPassword = DataChecker.IsNullEmptyOrJustWhiteSpace(passwordInput.text);
 				if (errorPassword)
 				{
 					passwordInput.transform.parent.gameObject.GetComponent<Image>().color = errorColor;
@@ -218,29 +228,47 @@ namespace Mix.Ui
 			}
 		}
 
-		private void OnEmailValueChanged(NativeTextView aField, string aValue)
-		{
-			EmailErrorMessageGameObject.SetActive(false);
-			emailInput.transform.parent.gameObject.GetComponent<Image>().color = defaultColor;
-		}
-
 		private void OnDestroy()
 		{
-			firstNameInput.KeyboardFocusChanged -= FirstNameInputFocusChanged;
-			lastNameInput.KeyboardFocusChanged -= LastNameInputFocusChanged;
-			emailInput.KeyboardFocusChanged -= EmailInputFocusChanged;
-			passwordInput.KeyboardFocusChanged -= PasswordInputFocusChanged;
+			emailInput.onValueChanged.RemoveListener(OnEmailValueChanged);
 			if (MonoSingleton<NativeKeyboardManager>.Instance != null)
 			{
 				MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.OnNativeKeyboardReturnKeyPressed -= OnKeyboardReturnKey;
 			}
 		}
 
+		private void OnEmailValueChanged(string aValue)
+		{
+			EmailErrorMessageGameObject.SetActive(false);
+			emailInput.transform.parent.gameObject.GetComponent<Image>().color = defaultColor;
+		}
+
 		private void Update()
 		{
+			if (firstNameInput.isFocused != wasFirstNameFocused)
+			{
+				FirstNameInputFocusChanged(firstNameInput, firstNameInput.isFocused);
+				wasFirstNameFocused = firstNameInput.isFocused;
+			}
+			if (lastNameInput.isFocused != wasLastNameFocused)
+			{
+				LastNameInputFocusChanged(lastNameInput, lastNameInput.isFocused);
+				wasLastNameFocused = lastNameInput.isFocused;
+			}
+			if (emailInput.isFocused != wasEmailFocused)
+			{
+				EmailInputFocusChanged(emailInput, emailInput.isFocused);
+				wasEmailFocused = emailInput.isFocused;
+			}
+			if (passwordInput.isFocused != wasPasswordFocused)
+			{
+				PasswordInputFocusChanged(passwordInput, passwordInput.isFocused);
+				wasPasswordFocused = passwordInput.isFocused;
+			}
+
 			if (!submitted)
 			{
-				if (!MonoSingleton<ConnectionManager>.Instance.IsConnected || string.IsNullOrEmpty(emailInput.Value) || string.IsNullOrEmpty(passwordInput.Value) || !TouAccepted() || string.Empty.Equals(emailInput.Value.Trim()) || string.Empty.Equals(passwordInput.Value.Trim()) || (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && (string.IsNullOrEmpty(firstNameInput.Value) || string.Empty.Equals(firstNameInput.Value.Trim()))) || (ageBand.Permissions.LastName is IRegistrationPermissionRequired && (string.IsNullOrEmpty(lastNameInput.Value) || string.Empty.Equals(lastNameInput.Value.Trim()))))
+				if (!MonoSingleton<ConnectionManager>.Instance.IsConnected || string.IsNullOrEmpty(emailInput.text) || string.IsNullOrEmpty(passwordInput.text) || !TouAccepted() || string.Empty.Equals(emailInput.text.Trim()) || string.Empty.Equals(passwordInput.text.Trim()) || (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && (string.IsNullOrEmpty(firstNameInput.text) || string.Empty.Equals(firstNameInput.text.Trim()))) || (ageBand.Permissions.LastName is IRegistrationPermissionRequired && (string.IsNullOrEmpty(lastNameInput.text) || string.Empty.Equals(lastNameInput.text.Trim()))))
 				{
 					CreateAdultAccountButton.interactable = false;
 				}
@@ -249,8 +277,8 @@ namespace Mix.Ui
 					CreateAdultAccountButton.interactable = true;
 				}
 			}
-			QuestionButton.SetActive(string.IsNullOrEmpty(passwordInput.Value));
-			if (firstNameInput.Selected || lastNameInput.Selected || emailInput.Selected || passwordInput.Selected)
+			QuestionButton.SetActive(string.IsNullOrEmpty(passwordInput.text));
+			if (firstNameInput.isFocused || lastNameInput.isFocused || emailInput.isFocused || passwordInput.isFocused)
 			{
 				ScrollViewGameObject.GetComponent<ScrollRect>().enabled = false;
 			}
@@ -258,6 +286,7 @@ namespace Mix.Ui
 			{
 				ScrollViewGameObject.GetComponent<ScrollRect>().enabled = true;
 			}
+
 			if (!updateLinks)
 			{
 				return;
@@ -501,21 +530,8 @@ namespace Mix.Ui
 		public void TogglePassword()
 		{
 			MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.Hide();
-			passwordInput.IsPassword = !ShowPassword.isOn;
-		}
-
-		public void OnPasswordRulesClicked()
-		{
-			MonoSingleton<NativeKeyboardManager>.Instance.Keyboard.Hide();
-			Analytics.LogViewPasswordRules();
-			GenericPanel genericPanel = (GenericPanel)Singleton<PanelManager>.Instance.ShowPanel(Panels.GENERIC);
-			Singleton<PanelManager>.Instance.SetupTokens(new Dictionary<Text, string>
-			{
-				{ genericPanel.TitleText, "createaccountscreen.panelbase.passwordrulestext" },
-				{ genericPanel.MessageText, "createaccountscreen.panelbase.passwordrulesdetailtext" },
-				{ genericPanel.ButtonOneText, null },
-				{ genericPanel.ButtonTwoText, "createaccountscreen.okbtn.oktext" }
-			});
+			passwordInput.inputType = ShowPassword.isOn ? InputField.InputType.Standard : InputField.InputType.Password;
+			passwordInput.ForceLabelUpdate();
 		}
 
 		private void OnKeyboardResize(object sender, NativeKeyboardHeightChangedEventArgs args)
@@ -530,30 +546,15 @@ namespace Mix.Ui
 				return;
 			}
 			ScrollViewGameObject.GetComponent<ScrollRect>().enabled = false;
-			if (firstNameInput.Selected)
-			{
-				firstNameInput.ScrollToInput(ScrollContent, args.Height);
-			}
-			else if (lastNameInput.Selected)
-			{
-				lastNameInput.ScrollToInput(ScrollContent, args.Height);
-			}
-			else if (emailInput.Selected)
-			{
-				emailInput.ScrollToInput(ScrollContent, args.Height);
-			}
-			else if (passwordInput.Selected)
-			{
-				passwordInput.ScrollToInput(ScrollContent, args.Height);
-			}
+			scrollToTop();
 		}
 
-		private bool ClientValidateAdultAccountValues(NativeTextView aField = null)
+		private bool ClientValidateAdultAccountValues(InputField aField = null)
 		{
-			errorFirstName = (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(firstNameInput.Value)) || (ageBand.Permissions.FirstName is IRegistrationPermissionOptional && firstNameInput.Value.Length != 0 && firstNameInput.Value.Trim().Length == 0);
-			errorLastName = (ageBand.Permissions.LastName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(lastNameInput.Value)) || (ageBand.Permissions.LastName is IRegistrationPermissionOptional && lastNameInput.Value.Length != 0 && lastNameInput.Value.Trim().Length == 0);
-			errorEmail = !DataChecker.IsValidEmail(emailInput.Value);
-			errorPassword = DataChecker.IsNullEmptyOrJustWhiteSpace(passwordInput.Value);
+			errorFirstName = (ageBand.Permissions.FirstName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(firstNameInput.text)) || (ageBand.Permissions.FirstName is IRegistrationPermissionOptional && firstNameInput.text.Length != 0 && firstNameInput.text.Trim().Length == 0);
+			errorLastName = (ageBand.Permissions.LastName is IRegistrationPermissionRequired && DataChecker.IsNullEmptyOrJustWhiteSpace(lastNameInput.text)) || (ageBand.Permissions.LastName is IRegistrationPermissionOptional && lastNameInput.text.Length != 0 && lastNameInput.text.Trim().Length == 0);
+			errorEmail = !DataChecker.IsValidEmail(emailInput.text);
+			errorPassword = DataChecker.IsNullEmptyOrJustWhiteSpace(passwordInput.text);
 			ColorBlock colors = Tou.colors;
 			Tou.colors = colors;
 			string text = string.Empty;
@@ -565,7 +566,7 @@ namespace Mix.Ui
 			}
 			else
 			{
-				errorPassword = passwordInput.Value.Length < 6;
+				errorPassword = passwordInput.text.Length < 6;
 				if (errorPassword && (aField == null || aField == passwordInput))
 				{
 					Analytics.LogAdultAccountCreationFailure("invalid_password_size");
@@ -598,7 +599,7 @@ namespace Mix.Ui
 			return !errorFirstName && !errorLastName && !errorEmail && !errorPassword;
 		}
 
-		private void toggleErrorFields(NativeTextView aField = null)
+		private void toggleErrorFields(InputField aField = null)
 		{
 			EmailErrorMessageGameObject.SetActive(errorEmail && (aField == null || aField == emailInput));
 			PasswordErrorMessageGameObject.SetActive(errorPassword && (aField == null || aField == passwordInput));
@@ -617,7 +618,7 @@ namespace Mix.Ui
 		private void ServerValidateAdultAccountValues()
 		{
 			NewAccountValidator newAccountValidator = new NewAccountValidator(MonoSingleton<LoginManager>.Instance.KeychainData, Log.MixLogger, MonoSingleton<LoginManager>.Instance.StorageDir, ExternalizedConstants.GuestControllerUrl, MixSession.GuestControllerSpoofedIP, ExternalizedConstants.GuestControllerClientId, MonoSingleton<LoginManager>.Instance.CoroutineManager);
-			newAccountValidator.ValidateAdultAccount(emailInput.Value, passwordInput.Value, OnValidateResponse);
+			newAccountValidator.ValidateAdultAccount(emailInput.text, passwordInput.text, OnValidateResponse);
 		}
 
 		private void OnValidateResponse(IValidateNewAccountResult aResult)
@@ -676,14 +677,14 @@ namespace Mix.Ui
 						if (error is IValidateNewAccountNotRegisteredTransactorError)
 						{
 							Singleton<SoundManager>.Instance.PlaySoundEvent("MainApp/UI/SFX_2_SendDisney");
-							caller.HandleNrtAccount(emailInput.Value);
+							caller.HandleNrtAccount(emailInput.text);
 							return;
 						}
 						if (error is IValidateNewAccountMultipleAccountsError)
 						{
 							errorEmail = true;
 							Singleton<SoundManager>.Instance.PlaySoundEvent("MainApp/UI/SFX_2_SendDisney");
-							caller.HandleMaseAccount(emailInput.Value);
+							caller.HandleMaseAccount(emailInput.text);
 							return;
 						}
 						if (error is IValidateNewAccountUsernameError)
@@ -722,11 +723,11 @@ namespace Mix.Ui
 			}
 			if (fromParentalControls)
 			{
-				MonoSingleton<LoginManager>.Instance.CreateGuardianAccount(birthYear, birthMonth, birthDay, firstNameInput.Value, lastNameInput.Value, emailInput.Value, passwordInput.Value, Localizer.GetLocale(), countryCode, dictionary, ageBand.LegalDocuments, OnCreateGuardianAccount);
+				MonoSingleton<LoginManager>.Instance.CreateGuardianAccount(birthYear, birthMonth, birthDay, firstNameInput.text, lastNameInput.text, emailInput.text, passwordInput.text, Localizer.GetLocale(), countryCode, dictionary, ageBand.LegalDocuments, OnCreateGuardianAccount);
 			}
 			else
 			{
-				MonoSingleton<LoginManager>.Instance.CreateAdultAccount(birthYear, birthMonth, birthDay, firstNameInput.Value, lastNameInput.Value, emailInput.Value, passwordInput.Value, Localizer.GetLocale(), countryCode, dictionary, ageBand.LegalDocuments, OnCreateAdultAccount);
+				MonoSingleton<LoginManager>.Instance.CreateAdultAccount(birthYear, birthMonth, birthDay, firstNameInput.text, lastNameInput.text, emailInput.text, passwordInput.text, Localizer.GetLocale(), countryCode, dictionary, ageBand.LegalDocuments, OnCreateAdultAccount);
 			}
 		}
 
@@ -861,17 +862,20 @@ namespace Mix.Ui
 		{
 			if (args.ReturnKeyType == NativeKeyboardReturnKey.Next)
 			{
-				if (emailInput.Selected)
+				if (emailInput.isFocused)
 				{
-					passwordInput.SelectInput();
+					passwordInput.Select();
+					passwordInput.ActivateInputField();
 				}
-				else if (passwordInput.Selected)
+				else if (passwordInput.isFocused)
 				{
-					firstNameInput.SelectInput();
+					firstNameInput.Select();
+					firstNameInput.ActivateInputField();
 				}
-				else if (firstNameInput.Selected)
+				else if (firstNameInput.isFocused)
 				{
-					lastNameInput.SelectInput();
+					lastNameInput.Select();
+					lastNameInput.ActivateInputField();
 				}
 			}
 		}

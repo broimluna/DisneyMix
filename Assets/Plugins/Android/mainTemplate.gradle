@@ -7,7 +7,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
     implementation 'com.unity3d.ads:unity-ads:[4.16.3,4.17[' // Packages/com.unity.ads/Editor/Source/Dependencies.xml:7
-    implementation 'commons-lang:commons-lang:2.6'
 // Android Resolver Dependencies End
 **DEPS**}
 
@@ -48,7 +47,6 @@ android {
         consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
 **DEFAULT_CONFIG_SETUP**
     }
-        useLibrary 'org.apache.http.legacy'
 
     lint {
         abortOnError false
