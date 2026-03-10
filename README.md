@@ -1,6 +1,8 @@
 # DisneyMix
 Disney Mix Recreation.
 
+Unity Version: 6000.3.10f1
+
 Current state of recreation/decompilation:
 1. Some Input Bars are broken since it used a custom script, can and is being ported to Unity's Input Field
 2. Chat is broken, text is not appearing.
