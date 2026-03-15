@@ -47,6 +47,8 @@ Shader "UI/OptimizedUIShader"
 			#include "UnityCG.cginc"
 			#include "UnityUI.cginc"
 
+			#pragma multi_compile_local _ UNITY_UI_CLIP_RECT
+
 			struct appdata_t
 			{
 				float4 vertex : POSITION;
@@ -79,7 +81,10 @@ Shader "UI/OptimizedUIShader"
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
+				#ifdef UNITY_UI_CLIP_RECT
 				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+				#endif
+				clip(color.a - 0.001);
 				return color;
 			}
 			ENDCG
