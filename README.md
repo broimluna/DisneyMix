@@ -1,3 +1,6 @@
+# Development of the Disney Mix project has moved!<br>Visit the new repo [here](https://github.com/Disney-Remixed/DisneyMix).
+
+
 # DisneyMix
 Disney Mix Recreation.
 
