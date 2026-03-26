@@ -1,7 +1,10 @@
-# Disney Mix Recreation
+<div align="center">
+  
 ![Disney Mix Icon](https://github.com/Disney-Remixed/DisneyMix/raw/main/Assets/Resources/icons/app_icon.png)
 
-A recreation/decompilation project for Disney Mix.
+# A recreation/decompilation project of Disney Mix.
+
+</div>
 
 ---
 
