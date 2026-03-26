@@ -1,19 +1,36 @@
-# DisneyMix
-Disney Mix Recreation.
+# Disney Mix Recreation
+![Disney Mix Icon](https://github.com/Disney-Remixed/DisneyMix/raw/main/Assets/Resources/icons/app_icon.png)
 
-Unity Version: 6000.3.10f1
-<br>
-A move to 3.11 is planned but a move beyond Unity 6.3 is not planned until Unity 6.7.
+A recreation/decompilation project for Disney Mix.
 
-Current state of recreation/decompilation:
-1. Chatting *should* work, adding/searching friends is still in development, but progress towards getting a good chatting experience running is underway.
-2. Some Input Bars are broken since it used a custom script, is being ported to Unity's Input Field
-3. Some games and stickers may be missing - will be replaced or removed sadly :(
-4. Mobile support should be functional. 
+---
 
-Server is based on a early version of OpenCPI's recreation of Club Penguin Island's WebAPI, which is based on Mix API.<br>Needs completion and initial release plus some custom work to make it work.
-<br>
-Issues are:
-<br>
-1. Missing Official Accounts
-2. Most of Disney Mix's content
+### 🛠 Technical Specifications
+* **Unity Version:** `6000.3.10f1`
+* **Roadmap:** A move to `3.11` is planned. Updates beyond **Unity 6.3** are on hold until the release of **Unity 6.7**.
+* **Backend:** Based on an early version of the **OpenCPI WebAPI** (for Club Penguin Island), adapted for Disney Mix.
+
+---
+
+### 📈 Project Status
+- [x] **Client status:** Mostly stable, few bugs here and there that need fixing, mostly icons and shaders
+- [x] **Mobile Support:** Early, but functional.
+- [>] **Chatting:** Basic functionality should work; improvements for a smoother experience are planned.
+- [ ] **Social Features:** Currently being researched in client to reimplement server-side.
+- [ ] **Input Systems:** Transitioning broken custom input bars to the native Unity Input Field.
+- [ ] **Content:** Some games and stickers are currently missing; these will either be restored or removed in future builds.
+
+---
+
+### ⚠️ Known Issues & Missing Content
+* **Official Accounts:** Currently missing from the database.
+* **Content Assets:** A significant portion of the original Disney Mix content is lost.
+* **Server Implementation:** Requires further work and completion before the initial stable release.
+
+---
+
+### 🚀 Getting Started
+1. Clone the repository.
+2. Ensure you are using the correct **Unity Editor** version specified above.
+3. Add the project to Unity and open it.
+4. To boot, open `StaticAssets/Scenes/scn_Main.unity`
