@@ -10,7 +10,7 @@ namespace Mix.Games.Tray.Fireworks
 	{
 		public FireworksGame game;
 
-		public InputField nativeTextView;
+		public NativeTextView nativeTextView;
 
 		public Camera panelCamera;
 
@@ -61,8 +61,7 @@ namespace Mix.Games.Tray.Fireworks
 			toastPanel.Init(BaseGameController.Instance.Session.StatusBarHeight, BaseGameController.Instance.Session.ScreenHeight, BaseGameController.Instance.Session.HeightScale);
 			toastPanel.ToastPanelAnimationComplete += ActivateKeyboard;
 			toastPanel.ToastPanelHideComplete += HideObject;
-			nativeTextView.text = BaseGameController.Instance.Session.GetLocalizedString("customtokens.game.fireworks_entermessage");
-            nativeTextView.characterLimit = 16;
+			nativeTextView.Value = BaseGameController.Instance.Session.GetLocalizedString("customtokens.game.fireworks_entermessage");
 		}
 
 		private void OnEnable()
@@ -93,7 +92,7 @@ namespace Mix.Games.Tray.Fireworks
 		{
 			if (!IsValidating())
 			{
-				string value = nativeTextView.text;
+				string value = nativeTextView.Value;
 				EnableValidationSpinner(true);
 				if (!ValidateMessage(value))
 				{
@@ -118,14 +117,14 @@ namespace Mix.Games.Tray.Fireworks
 			EnableValidationSpinner(false);
 			errorText.gameObject.SetActive(true);
 			errorText.text = game.GameController.GetLocalizedString("customtokens.game.fireworks_invalidmessage");
-			nativeTextView.text = string.Empty;
+			nativeTextView.Value = string.Empty;
 		}
 
 		private void MessageModerated(string aModeratedHint)
 		{
 			errorText.gameObject.SetActive(true);
 			errorText.text = game.GameController.GetLocalizedString("customtokens.game.fireworks_invalidmessage");
-			nativeTextView.text = aModeratedHint;
+			nativeTextView.Value = aModeratedHint;
 		}
 
 		private void EnableValidationSpinner(bool doSpin)
