@@ -27,7 +27,7 @@
 
 ---
 
-###  Known Issues & Missing Content
+### ⚠️ Known Issues & Missing Content
 * **Content Assets:** A significant portion of the original Disney Mix content is lost.
 * **Server Implementation:** Requires further work and completion before the initial stable release.
 
