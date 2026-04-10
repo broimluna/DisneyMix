@@ -182,6 +182,8 @@ namespace Mix.AvatarInternal
                 textureTracker.IsNullOrDisposed())
                 return;
 
+            Log($"SetAvatarPlanesVisibility: {(isShown ? "show" : "hide")} face planes");
+
             leftEyeObj.SetActive(isShown);
             rightEyeObj.SetActive(isShown);
             leftEyebrowObj.SetActive(isShown);
@@ -278,6 +280,12 @@ namespace Mix.AvatarInternal
                 return;
             }
 
+            if (dna?.Costume == null || string.IsNullOrEmpty(dna.Costume.SelectionKey) || dna.Costume.SelectionKey == "0")
+            {
+                callback?.Invoke(false);
+                return;
+            }
+
             var propInfos = new[] { new KeyValuePair<IAvatarProperty, string>(dna.Costume, "Costume") };
             string path = GenerateFilenameFromProps(propInfos) + ".png";
 
@@ -306,7 +314,7 @@ namespace Mix.AvatarInternal
                         {
                             hasErrored = true;
                             LogError("Failed to load costume bundle for path: " + path);
-                            callback?.Invoke(true);
+                            callback?.Invoke(false);
                             return;
                         }
                         bool hasCostume = !faceComp.IsComponentIgnored(dna.Costume.SelectionKey);
@@ -343,6 +351,14 @@ namespace Mix.AvatarInternal
                 }
                 else
                 {
+                    if (texture2D == null)
+                    {
+                        hasErrored = true;
+                        LogError($"Costume cached image load returned success but texture was null for {path}.");
+                        callback?.Invoke(false);
+                        return;
+                    }
+
                     MultiplaneMemCache.AddTexture(path, texture2D, () => UnityEngine.Object.Destroy(texture2D));
                     SetTextures("_MainTex", faceMat, string.Empty, () => callback?.Invoke(true))(texture2D);
                 }
@@ -447,6 +463,13 @@ namespace Mix.AvatarInternal
 
             if (texture != null)
             {
+                if (textureTracker.IsNullOrDisposed())
+                {
+                    hasErrored = true;
+                    callback?.Invoke();
+                    return;
+                }
+
                 textureTracker.SetAndTrackTexture(leftEyebrowMat, "_MainTex", path, texture);
                 textureTracker.SetAndTrackTexture(rightEyebrowMat, "_MainTex", path, texture);
                 callback?.Invoke();
@@ -456,6 +479,12 @@ namespace Mix.AvatarInternal
             assetManager.LoadCachedImage(path, (success, texture2D) =>
             {
                 Log($"Brow LoadCachedImage {path} success={success}");
+
+                if (success && texture2D == null)
+                {
+                    LogError($"Brow cached image load returned success but texture was null for {path}. Falling back to bundle load.");
+                    success = false;
+                }
 
                 if (!success)
                 {
@@ -470,6 +499,14 @@ namespace Mix.AvatarInternal
 
                         eyebrowComp.Composite(flags, mainTex =>
                         {
+                            if (mainTex == null)
+                            {
+                                hasErrored = true;
+                                LogError("eyebrowComp.Composite returned null texture for path: " + path);
+                                callback?.Invoke();
+                                return;
+                            }
+
                             if (textureTracker.IsNullOrDisposed())
                             {
                                 hasErrored = true;
@@ -513,6 +550,13 @@ namespace Mix.AvatarInternal
 
             if (texture != null)
             {
+                if (textureTracker.IsNullOrDisposed())
+                {
+                    hasErrored = true;
+                    callback?.Invoke();
+                    return;
+                }
+
                 textureTracker.SetAndTrackTexture(leftEyeMat, "_MainTex", path, texture);
                 textureTracker.SetAndTrackTexture(rightEyeMat, "_MainTex", path, texture);
                 callback?.Invoke();
@@ -522,6 +566,12 @@ namespace Mix.AvatarInternal
             assetManager.LoadCachedImage(path, (success, texture2D) =>
             {
                 Log($"Eyes LoadCachedImage {path} success={success}");
+
+                if (success && texture2D == null)
+                {
+                    LogError($"Eyes cached image load returned success but texture was null for {path}. Falling back to bundle load.");
+                    success = false;
+                }
 
                 if (!success)
                 {
@@ -536,6 +586,14 @@ namespace Mix.AvatarInternal
 
                         eyeComp.Composite(flags, mainTex =>
                         {
+                            if (mainTex == null)
+                            {
+                                hasErrored = true;
+                                LogError("eyeComp.Composite returned null texture for path: " + path);
+                                callback?.Invoke();
+                                return;
+                            }
+
                             if (textureTracker.IsNullOrDisposed())
                             {
                                 hasErrored = true;

@@ -37,7 +37,7 @@ namespace Avatar
 
 		public void SetProcessing(bool value)
 		{
-			Debug.Log($"[AvatarApi] SetProcessing: {value}");
+			//Debug.Log($"[AvatarApi] SetProcessing: {value}");
 			engine.CompositeFreely = value;
 		}
 

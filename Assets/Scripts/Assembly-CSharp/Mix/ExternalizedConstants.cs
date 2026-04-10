@@ -125,10 +125,9 @@ namespace Mix
 		{
 			get
 			{
-                // return "http://localhost:5782";
-                return "http://localhost:80";
-            }
-        }
+				return ((ExternalizedConstant)externalizedConstants["guest_baseUrl"]).value;
+			}
+		}
 
 		public static string GuestControllerClientId
 		{
@@ -206,40 +205,34 @@ namespace Mix
 		{
 			get
 			{
-                // return "http://localhost:5782";
-                return "http://localhost:80";
-            }
-        }
+				return ((ExternalizedConstant)externalizedConstants["cellophane_client_id_assets"]).value;
+			}
+		}
 
 
         public static string CpipeUrl
 		{
 			get
 			{
-                // return "http://localhost:5782";
-                return "http://localhost:80";
-            }
-        }
+				return ((ExternalizedConstant)externalizedConstants["cpipe_url"]).value;
+			}
+		}
 
 		public static string MixPlatformServicesUrl
 		{
 			get
 			{
-
-                // return "http://localhost:5782";
-                return "http://localhost:80";
-            }
-        }
+				return ((ExternalizedConstant)externalizedConstants["mix_platform_services_url"]).value;
+			}
+		}
 
 		public static string MixPlatformServicesCellophane
 		{
 			get
 			{
-                // return "http://localhost:5782";
-                return "http://localhost:80";
-
-            }
-        }
+				return ((ExternalizedConstant)externalizedConstants["mix_platform_services_cellophane"]).value;
+			}
+		}
 
 		public static string GcmSenderId
 		{

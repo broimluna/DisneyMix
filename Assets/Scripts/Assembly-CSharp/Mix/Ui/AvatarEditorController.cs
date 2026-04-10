@@ -54,6 +54,7 @@ namespace Mix.Ui
         public AvatarObjectSpawner AvatarSpawner;
         public AvatarMediaTray mediaTray;
         public AvatarColorPicker ColorPicker;
+        [SerializeField] private string initialCategoryName = "Costume";
 
         private bool startingUp = true;
         private float lockUi = -1f;
@@ -65,6 +66,7 @@ namespace Mix.Ui
         private IRegistrationProfile profileInfo;
         private AvatarFlags flags = AvatarFlags.WithoutCaching;
         private bool isDirty;
+        private bool categoryTrayInitialized;
 
         private bool IsDirty
         {
@@ -131,6 +133,20 @@ namespace Mix.Ui
                 avatarSpinner.Avatar.SetActive(false);
             }
             ProgressBar.GetComponent<Animator>().Play("ProgressBar_2-3");
+        }
+
+        private void LoadCategoryOnAwake()
+        {
+            Debug.Log($"[AvatarEditor] LoadCategoryOnAwake called - initialCategoryName: {initialCategoryName}");
+            if (categoryTrayInitialized || mediaTray == null || mediaTray.categorySelector == null)
+            {
+                return;
+            }
+
+            mediaTray.Init(this);
+            mediaTray.categorySelector.Setup(mediaTray);
+            mediaTray.categorySelector.LoadCategory(initialCategoryName);
+            categoryTrayInitialized = true;
         }
 
         private ClientAvatar CloneAvatar(IAvatar toClone)
@@ -212,8 +228,7 @@ namespace Mix.Ui
                 handleDisplayNameStatus();
             }
             backgroundImage.enabled = false;
-            mediaTray.Init(this);
-            mediaTray.categorySelector.Setup(mediaTray);
+            LoadCategoryOnAwake();
         }
 
         public override void OnAndroidBackButtonClicked()
