@@ -6,10 +6,10 @@ using UnityEngine;
 
 public static class RebuildAssetBundles
 {
-	private const string OutputRoot = "AssetBundles";
+	private static readonly string OutputRoot = Application.streamingAssetsPath + "\\AssetBundles";
 	private const string RawBuildFolderName = "_raw";
 	private const string DynamicAssetsRoot = "Assets\\DynamicAssets";
-	private const string AssetBundlesJsonRelativePath = "Assets/StreamingAssets/assetbundles.json";
+	private const string AssetBundlesJsonRelativePath = "Assets/Resources/json/AssetBundles.json";
 
 	[MenuItem("Tools/AssetBundles/Rebuild All")]
 	public static void RebuildAll()
